@@ -1,0 +1,21 @@
+push model
+ondemand
+metrics  -> basic information system, metrics
+websocket
+    polling frequency 5s
+http
+
+/exportlog
+
+
+
+mainserver
+    kafka()
+    elasticseartch
+        flat search
+        sytem information {
+
+        }
+
+
+
