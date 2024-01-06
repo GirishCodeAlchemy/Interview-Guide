@@ -1,0 +1,35 @@
+def isValid(s):
+    # Step 1: Count the frequency of each character
+    char_count = {}
+    for char in s:
+        char_count[char] = char_count.get(char, 0) + 1
+
+    # Step 2: Identify the frequencies of each unique character
+    frequencies = list(char_count.values())
+
+    # Step 3: Check if the frequencies satisfy the conditions
+    unique_frequencies = set(frequencies)
+
+    if len(unique_frequencies) == 1:
+        # All characters have the same frequency
+        return "YES"
+    elif len(unique_frequencies) == 2:
+        # Two unique frequencies are possible
+        freq1, freq2 = unique_frequencies
+        count1 = frequencies.count(freq1)
+        count2 = frequencies.count(freq2)
+
+        # Check if removing one character can make the string valid
+        if (count1 == 1 and (freq1 == 1 or freq1 - 1 == freq2)) or (count2 == 1 and (freq2 == 1 or freq2 - 1 == freq1)):
+            return "YES"
+
+    # If none of the conditions are met, the string is not valid
+    return "NO"
+
+# Example usage:
+s1 = "aabbcc"
+s2 = "aabbccc"
+s3 = "aabbcccc"
+print(isValid(s1))  # Output: "YES"
+print(isValid(s2))  # Output: "YES"
+print(isValid(s3))  # Output: "NO"
