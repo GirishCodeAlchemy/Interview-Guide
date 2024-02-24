@@ -1,0 +1,681 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>AWS EKS exam</title><style>
+    /* cspell:disable-file */
+    /* webkit printing magic: print all background colors */
+    html {
+        -webkit-print-color-adjust: exact;
+    }
+    * {
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    @media only screen {
+        body {
+            margin: 2em auto;
+            max-width: 900px;
+            color: rgb(55, 53, 47);
+        }
+    }
+
+    body {
+        line-height: 1.5;
+        white-space: pre-wrap;
+    }
+
+    a,
+    a.visited {
+        color: inherit;
+        text-decoration: underline;
+    }
+
+    .pdf-relative-link-path {
+        font-size: 80%;
+        color: #444;
+    }
+
+    h1,
+    h2,
+    h3 {
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 0.75em;
+    }
+
+    h1 {
+        font-size: 1.875rem;
+        margin-top: 1.875rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin-top: 1.25rem;
+    }
+
+    .source {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 1.5em;
+        word-break: break-all;
+    }
+
+    .callout {
+        border-radius: 3px;
+        padding: 1rem;
+    }
+
+    figure {
+        margin: 1.25em 0;
+        page-break-inside: avoid;
+    }
+
+    figcaption {
+        opacity: 0.5;
+        font-size: 85%;
+        margin-top: 0.5em;
+    }
+
+    mark {
+        background-color: transparent;
+    }
+
+    .indented {
+        padding-left: 1.5em;
+    }
+
+    hr {
+        background: transparent;
+        display: block;
+        width: 100%;
+        height: 1px;
+        visibility: visible;
+        border: none;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    @media only print {
+        img {
+            max-height: 100vh;
+            object-fit: contain;
+        }
+    }
+
+    @page {
+        margin: 1in;
+    }
+
+    .collection-content {
+        font-size: 0.875rem;
+    }
+
+    .column-list {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .column {
+        padding: 0 1em;
+    }
+
+    .column:first-child {
+        padding-left: 0;
+    }
+
+    .column:last-child {
+        padding-right: 0;
+    }
+
+    .table_of_contents-item {
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1.3;
+        padding: 0.125rem;
+    }
+
+    .table_of_contents-indent-1 {
+        margin-left: 1.5rem;
+    }
+
+    .table_of_contents-indent-2 {
+        margin-left: 3rem;
+    }
+
+    .table_of_contents-indent-3 {
+        margin-left: 4.5rem;
+    }
+
+    .table_of_contents-link {
+        text-decoration: none;
+        opacity: 0.7;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid rgba(55, 53, 47, 0.09);
+        border-collapse: collapse;
+    }
+
+    table {
+        border-left: none;
+        border-right: none;
+    }
+
+    th,
+    td {
+        font-weight: normal;
+        padding: 0.25em 0.5em;
+        line-height: 1.5;
+        min-height: 1.5em;
+        text-align: left;
+    }
+
+    th {
+        color: rgba(55, 53, 47, 0.6);
+    }
+
+    ol,
+    ul {
+        margin: 0;
+        margin-block-start: 0.6em;
+        margin-block-end: 0.6em;
+    }
+
+    li > ol:first-child,
+    li > ul:first-child {
+        margin-block-start: 0.6em;
+    }
+
+    ul > li {
+        list-style: disc;
+    }
+
+    ul.to-do-list {
+        padding-inline-start: 0;
+    }
+
+    ul.to-do-list > li {
+        list-style: none;
+    }
+
+    .to-do-children-checked {
+        text-decoration: line-through;
+        opacity: 0.375;
+    }
+
+    ul.toggle > li {
+        list-style: none;
+    }
+
+    ul {
+        padding-inline-start: 1.7em;
+    }
+
+    ul > li {
+        padding-left: 0.1em;
+    }
+
+    ol {
+        padding-inline-start: 1.6em;
+    }
+
+    ol > li {
+        padding-left: 0.2em;
+    }
+
+    .mono ol {
+        padding-inline-start: 2em;
+    }
+
+    .mono ol > li {
+        text-indent: -0.4em;
+    }
+
+    .toggle {
+        padding-inline-start: 0em;
+        list-style-type: none;
+    }
+
+    /* Indent toggle children */
+    .toggle > li > details {
+        padding-left: 1.7em;
+    }
+
+    .toggle > li > details > summary {
+        margin-left: -1.1em;
+    }
+
+    .selected-value {
+        display: inline-block;
+        padding: 0 0.5em;
+        background: rgba(206, 205, 202, 0.5);
+        border-radius: 3px;
+        margin-right: 0.5em;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        white-space: nowrap;
+    }
+
+    .collection-title {
+        display: inline-block;
+        margin-right: 1em;
+    }
+
+    .page-description {
+        margin-bottom: 2em;
+    }
+
+    .simple-table {
+        margin-top: 1em;
+        font-size: 0.875rem;
+        empty-cells: show;
+    }
+    .simple-table td {
+        height: 29px;
+        min-width: 120px;
+    }
+
+    .simple-table th {
+        height: 29px;
+        min-width: 120px;
+    }
+
+    .simple-table-header-color {
+        background: rgb(247, 246, 243);
+        color: black;
+    }
+    .simple-table-header {
+        font-weight: 500;
+    }
+
+    time {
+        opacity: 0.5;
+    }
+
+    .icon {
+        display: inline-block;
+        max-width: 1.2em;
+        max-height: 1.2em;
+        text-decoration: none;
+        vertical-align: text-bottom;
+        margin-right: 0.5em;
+    }
+
+    img.icon {
+        border-radius: 3px;
+    }
+
+    .user-icon {
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 100%;
+        margin-right: 0.5rem;
+    }
+
+    .user-icon-inner {
+        font-size: 0.8em;
+    }
+
+    .text-icon {
+        border: 1px solid #000;
+        text-align: center;
+    }
+
+    .page-cover-image {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        max-height: 30vh;
+    }
+
+    .page-header-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .page-header-icon-with-cover {
+        margin-top: -0.72em;
+        margin-left: 0.07em;
+    }
+
+    .page-header-icon img {
+        border-radius: 3px;
+    }
+
+    .link-to-page {
+        margin: 1em 0;
+        padding: 0;
+        border: none;
+        font-weight: 500;
+    }
+
+    p > .user {
+        opacity: 0.5;
+    }
+
+    td > .user,
+    td > time {
+        white-space: nowrap;
+    }
+
+    input[type="checkbox"] {
+        transform: scale(1.5);
+        margin-right: 0.6em;
+        vertical-align: middle;
+    }
+
+    p {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
+    .image {
+        border: none;
+        margin: 1.5em 0;
+        padding: 0;
+        border-radius: 0;
+        text-align: center;
+    }
+
+    .code,
+    code {
+        background: rgba(135, 131, 120, 0.15);
+        border-radius: 3px;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 85%;
+        tab-size: 2;
+    }
+
+    code {
+        color: #eb5757;
+    }
+
+    .code {
+        padding: 1.5em 1em;
+    }
+
+    .code-wrap {
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+
+    .code > code {
+        background: none;
+        padding: 0;
+        font-size: 100%;
+        color: inherit;
+    }
+
+    blockquote {
+        font-size: 1.25em;
+        margin: 1em 0;
+        padding-left: 1em;
+        border-left: 3px solid rgb(55, 53, 47);
+    }
+
+    .bookmark {
+        text-decoration: none;
+        max-height: 8em;
+        padding: 0;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .bookmark-title {
+        font-size: 0.85em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 1.75em;
+        white-space: nowrap;
+    }
+
+    .bookmark-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bookmark-info {
+        flex: 4 1 180px;
+        padding: 12px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .bookmark-image {
+        width: 33%;
+        flex: 1 1 180px;
+        display: block;
+        position: relative;
+        object-fit: cover;
+        border-radius: 1px;
+    }
+
+    .bookmark-description {
+        color: rgba(55, 53, 47, 0.6);
+        font-size: 0.75em;
+        overflow: hidden;
+        max-height: 4.5em;
+        word-break: break-word;
+    }
+
+    .bookmark-href {
+        font-size: 0.75em;
+        margin-top: 0.25em;
+    }
+
+    .sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+    .code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+    .serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+    .mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+    .pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+    .pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+    .pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+    .pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+    .pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+    .pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+    .pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+    .pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+    .pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .highlight-default {
+        color: rgba(55, 53, 47, 1);
+    }
+    .highlight-gray {
+        color: rgba(120, 119, 116, 1);
+        fill: rgba(120, 119, 116, 1);
+    }
+    .highlight-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .highlight-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .highlight-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .highlight-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .highlight-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .highlight-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .highlight-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .highlight-red {
+        color: rgba(212, 76, 71, 1);
+        fill: rgba(212, 76, 71, 1);
+    }
+    .highlight-gray_background {
+        background: rgba(241, 241, 239, 1);
+    }
+    .highlight-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .highlight-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .highlight-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .highlight-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .highlight-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .highlight-purple_background {
+        background: rgba(244, 240, 247, 0.8);
+    }
+    .highlight-pink_background {
+        background: rgba(249, 238, 243, 0.8);
+    }
+    .highlight-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .block-color-default {
+        color: inherit;
+        fill: inherit;
+    }
+    .block-color-gray {
+        color: rgba(120, 119, 116, 1);
+        fill: rgba(120, 119, 116, 1);
+    }
+    .block-color-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .block-color-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .block-color-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .block-color-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .block-color-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .block-color-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .block-color-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .block-color-red {
+        color: rgba(212, 76, 71, 1);
+        fill: rgba(212, 76, 71, 1);
+    }
+    .block-color-gray_background {
+        background: rgba(241, 241, 239, 1);
+    }
+    .block-color-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .block-color-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .block-color-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .block-color-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .block-color-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .block-color-purple_background {
+        background: rgba(244, 240, 247, 0.8);
+    }
+    .block-color-pink_background {
+        background: rgba(249, 238, 243, 0.8);
+    }
+    .block-color-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+    .select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+    .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+    .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+    .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+    .select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+    .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+    .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+    .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+    .select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+    .select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+    .select-value-color-pageGlass { background-color: undefined; }
+    .select-value-color-washGlass { background-color: undefined; }
+
+    .checkbox {
+        display: inline-flex;
+        vertical-align: text-bottom;
+        width: 16;
+        height: 16;
+        background-size: 16px;
+        margin-left: 2px;
+        margin-right: 5px;
+    }
+
+    .checkbox-on {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+
+    .checkbox-off {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+
+    </style></head><body><article id="39f8d635-1502-4e9c-91cb-18a36063c992" class="page sans"><header><h1 class="page-title">AWS EKS exam</h1><p class="page-description"></p></header><div class="page-body"><p id="a55e2b27-1828-4234-a6cf-300a2abd15d2" class="">
+    </p><p id="0ba42fd8-0de3-4fec-9fe2-0c6ad08838eb" class=""><strong>Single Choice</strong></p><p id="a9919eee-7c91-4e51-a807-e7c0258203a8" class="">1)</p><p id="d38db7ea-26ab-4aad-a30b-83cd59e704a9" class="">Your customer wants to use AWS EKS to run a service. All the accounts are separated by permissions. The development team has asked the platform team to create an AWS EKS cluster. The EKS cluster was created successfully, but the customer cannot see the resources inside the cluster in the console.</p><p id="825551e9-bc18-4dd1-8438-af59f714f15e" class="">Why are the resources not visible to the development team?</p><ul id="229973c8-a852-450f-879d-3d0cc2b9be48" class="bulleted-list"><li style="list-style-type:disc">The Cluster IAM Role is missing AssumeRole.</li></ul><ul id="e4995a37-5ce4-49a1-b24f-5fcf873fb8df" class="bulleted-list"><li style="list-style-type:disc">The IAM User that the platform team used to create the AWS EKS does not have the appropriate permissions.</li></ul><ul id="3f46f755-12fa-4a42-8109-649c49e9b099" class="bulleted-list"><li style="list-style-type:disc">The IAM User used by the development team does not have the appropriate permissions.</li></ul><ul id="fe4fb616-f533-4d86-a8c9-d2894296d012" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">The development team IAM Role is not mapped to the aws-auth configmap.</mark><p id="19a0f17e-812e-4a19-ae58-644b59c8fb62" class=""><mark class="highlight-yellow">Comments: In order to see resources in the EKS Cluster, the user must have IAM mapped to the configmap (aws-auth) of EKS.</mark></p></li></ul><p id="568c5f1c-e8cc-4aa2-b74b-b29a22dde8cd" class="">
+    </p><p id="e866400d-c0b1-4388-9cd6-1fea52009f1a" class="">2)</p><p id="0b142c86-5fdb-4417-9135-c38cc78f32be" class="">Your organization has several applications developed in different languages. Managing centralized logging is a challenge. The centralized monitoring team has developed a monitoring helper microservice that can standardize logs and metrics from each of the ten microservices in a common format before ingesting them into a centralized log store.</p><p id="5d58374a-debb-466f-8c06-957f13ddf2ac" class="">What is the BEST way to run the monitoring helper container?</p><ul id="f66a9168-8ceb-4bde-a67a-e4cf32f8d904" class="bulleted-list"><li style="list-style-type:disc">Run the monitoring helper as a node agent on every node in the cluster.</li></ul><ul id="5723a2a8-fcc0-4bcc-99d2-6d25ed5a8d9b" class="bulleted-list"><li style="list-style-type:disc">Run the monitoring helper as a deployment with 2 replicas for high availability. Configure the application microservices to send logs to the helper deployment.</li></ul><ul id="371d9acd-922c-4569-98dd-d6da9075c745" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Run the monitoring helper as a sidecar container in application pods.</mark><p id="1ed2dc6f-70ff-4a82-bfb4-3cbbc7b4a8e8" class=""><mark class="highlight-yellow">Comments: This is the right answer that best addresses the constraints defined. By running the helper as a sidecar container, it will scale with the application pod with minimal application changes.</mark></p></li></ul><ul id="4cc70ffe-2907-46c0-b5a6-be5da87df808" class="bulleted-list"><li style="list-style-type:disc">Run the monitoring helper as a library in the application containers.</li></ul><p id="a21fa905-bdaa-4f52-8eae-a029771d23cc" class="">
+    </p><p id="aa06b36e-5551-48b4-9dc2-adb4b80b272b" class="">3)</p><p id="cb53bb8f-0320-415f-a3ae-98f3130e1f95" class="">Your customer is maturing their FinOps practice and cost efficiency is a big part of that effort. They host multiple applications on their shared EKS clusters. They are looking to charge back the EKS costs to the respective application teams.</p><p id="59c44517-fd4d-4946-9666-613b44b0ec86" class="">What is the MOST efficient way to allocate costs across the application teams?</p><ul id="017a744c-b109-478f-886c-4d67a80e2360" class="bulleted-list"><li style="list-style-type:disc">Cost Explorer with Savings Plans.</li></ul><ul id="ab1fb9f5-944b-411d-9965-56d354a7fdab" class="bulleted-list"><li style="list-style-type:disc">Spot Instances with Karpenter.</li></ul><ul id="f7129b3a-2437-4fb3-8b70-ae3ced34a2ff" class="bulleted-list"><li style="list-style-type:disc">Cluster Autoscaler Priority expander.</li></ul><ul id="c8643149-7b28-406d-92e2-047efbb27654" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Kubecost for all Kubernetes resources.</mark><p id="97358bfb-20e3-4294-950d-297d8efc0d45" class=""><mark class="highlight-yellow">Comments: Kubecost is used to allocate cost at a EKS/kubernetes resource level.</mark></p></li></ul><p id="b8add88a-001d-49ff-b1bf-6322439d1360" class="">
+    </p><p id="934df533-e11a-45d8-8329-d776cf5d5112" class="">4)</p><p id="b64b3e10-3283-4a9a-8791-3ba7d82eca92" class="">A developer needs to use the Docker Container Runtime to start a container locally, using docker container run, and interact with it through the command line.</p><p id="640ce3c8-f5ff-449a-89a3-e46d9379050f" class="">What command line flag is required so the session will be interactive using TTY?</p><ul id="75a3cdc6-42f3-40ec-99b1-82ca95827b93" class="bulleted-list"><li style="list-style-type:disc">-link</li></ul><ul id="b035f458-f756-4820-a000-152081134e3a" class="bulleted-list"><li style="list-style-type:disc">-expose</li></ul><ul id="5025b458-ff05-4c71-b1b6-68da07c1d81b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">-it</mark><p id="7b08230c-4145-4069-a0eb-673dcd5f0521" class=""><mark class="highlight-yellow">Comments: &quot;--it&quot; specifies an interactive session using TTY</mark></p></li></ul><ul id="ce1132fd-0b1a-4dd5-8cb7-8235ff9792a2" class="bulleted-list"><li style="list-style-type:disc">-attach</li></ul><p id="af5a4337-8524-40d8-aa14-0bbc99d798fb" class=""><strong>Score: 1.00</strong></p><p id="2945c241-1ff8-4784-8da5-6c1d8c6424d9" class=""><strong>Single Choice</strong></p><p id="d3251a7b-7b7c-47db-a2cd-f1a6a09911e4" class="">5)</p><p id="ea9dc017-14b3-4068-aed8-a46c29a401e6" class="">You have developed an application using a container hosting a web service. This web service is accessible via an ingress controller on your intranet and reads and writes data from a DynamoDB table. You want to be able to deploy this solution into different stages: dev, test, preprod and prod. You also want to be able to deploy the whole product with one command using parameters to specify the stage.</p><p id="fcdd0817-2d80-4fd3-9a01-afb91aec41dc" class="">Which solution fulfills all your requirements?</p><ul id="0717675b-07ea-4a8d-8bac-51d52bd57997" class="bulleted-list"><li style="list-style-type:disc">Manually deploy all the resources for each environment.</li></ul><ul id="8ac040de-01e8-4d47-8022-6b0c2b69290d" class="bulleted-list"><li style="list-style-type:disc">Package all the k8s object in one yaml file and call kubectl create -f to install the objects.</li></ul><ul id="cce96c70-d678-4e78-86c0-d029f42c4cd1" class="bulleted-list"><li style="list-style-type:disc">Use kubectl and call all the yaml files in one command to install the k8s objects.</li></ul><ul id="df569278-a0d0-4bf2-95fd-020f85ab11ed" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Create a helm chart containing all the resources and use helm to deploy the product.</mark><p id="b8008fca-79ce-4f39-86ac-aafd8236a642" class="">Comments: This is the only solution to deploy all the k8s objects in one row. The helm templating feature allows to parameterize these objects so that they can be adapted to the different stages. The helm command accepts values in parameters to be used by the templating engine.</p></li></ul><p id="106b2761-9b73-47bf-bc5d-8b127a540a71" class=""><strong>Score: 1.00</strong></p><p id="32a34066-a2d4-4a91-8c10-2b991b19b9c9" class=""><strong>Single Choice</strong></p><p id="af8758b3-b7d0-41f3-82f0-bbc29d83a9f5" class="">6)</p><p id="23ade860-29ef-4831-beed-52d4b7ce52ed" class="">You are a DevOps engineer tasked with building a new continuous delivery pipeline to deploy applications on an EKS cluster. Your team is curious about using GitOps but needs to know the key difference between GitOps and traditional CI/CD workflow.</p><p id="815a26ce-7c85-49b7-aa5e-c94264690017" class="">Which of the following BEST summarizes this difference?</p><ul id="c82a9209-aa37-4b8b-a1b1-b1087da436a3" class="bulleted-list"><li style="list-style-type:disc">GitOps workflows use declarative manifests as a descriptor of services to be deployed while traditional CI/CD workflows do not.</li></ul><ul id="2f5fc539-05ab-4cab-b4ed-0cadce06d942" class="bulleted-list"><li style="list-style-type:disc">GitOps workflows use git for source control while traditional CI/CD workflows do not.</li></ul><ul id="49c4f9c7-0114-4fe4-bf13-f218b42bd7d9" class="bulleted-list"><li style="list-style-type:disc">GitOps uses a push process in which changes are pushed onto the cluster by the agent while in a traditional CI/CD workflow the CD server pulls changes into the cluster.</li></ul><ul id="07a084f9-97bb-4bb3-951b-43e61cf89573" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">GitOps uses a pull process in which changes are pulled into the cluster by the agent while in a traditional CI/CD workflow the CD server pushes changes onto the cluster.</mark><p id="59030e97-a9ea-4e54-a041-32ead4b18984" class="">Comments: In GitOps workflows, an agent watches a git repo and when any changes are detected, they are pulled into the cluster overwriting the the current deployed version of an application. &lt;br&gt;&lt;br&gt;This way, the state of the cluster is always in sync with what is in source control hence why git is considered the &quot;source of truth&quot; in GitOps workflows.</p></li></ul><p id="f961bec5-1482-4104-82a2-c37943848eae" class=""><strong>Score: 1.00</strong></p><p id="64319d31-3871-4748-8e1c-8a7ea68fe818" class=""><strong>Single Choice</strong></p><p id="32da9055-0516-4b56-b48f-e9c64f24758e" class="">7)</p><p id="5237a8ee-4bea-4ad2-a475-6da96b2f6ca9" class="">A company&#x27;s security team needs to be able to detect whenever production containers attempt to communicate with known IP addresses associated with cryptocurrency-related activity. Automated vulnerability scanning of container images is performed in the CI/CD pipeline before deployment into managed node groups in EKS.</p><p id="b6941fa8-9a49-4b25-abd5-6b9631e8afd3" class="">Which solution should the security team leverage to meet their requirement?</p><ul id="601efcff-3c18-41b9-9564-590a2f3f4605" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Enable EKS Runtime Monitoring with GuardDuty.</mark><p id="6b19daf2-5d01-4fe7-a6c2-0c0267049b4e" class="">Comments: This scenario requires a runtime monitoring solution to detect malicious activity while the containers are running in which GuardDuty&#x27;s EKS Runtime Monitoring solution can be leveraged.</p></li></ul><ul id="976e7c60-c0ba-4dfe-b1b0-247afdbdcb6c" class="bulleted-list"><li style="list-style-type:disc">Vulnerability scanning is already performed on the container images in the CI/CD pipeline so no other solution is required.</li></ul><ul id="540acba9-12b6-4ec5-8637-591e2dbc5bad" class="bulleted-list"><li style="list-style-type:disc">Enable EKS control plane logging to send the Kubernetes API server logs to CloudWatch Logs and query for events using CloudWatch Logs Insights.</li></ul><ul id="d968b232-86fe-4b20-acc7-5c9d09a59f9f" class="bulleted-list"><li style="list-style-type:disc">Configure the deployments to run on AWS Fargate instead since access to the underlying host is restricted.</li></ul><p id="1937d77d-99fa-470d-a4d1-4e08f4544888" class=""><strong>Score: 1.00</strong></p><p id="338777c3-eae1-4637-8f36-18163b5e792c" class=""><strong>Single Choice</strong></p><p id="23773cc8-eb88-4d5c-b763-cb14faeab7cb" class="">8)</p><p id="740e79ce-5280-449c-ba69-758161b6f393" class="">You are a DevOps engineer in a Travel Booking company that has recently deployed its critical application to the Amazon Elastic Kubernetes Service (EKS). During the holiday season, the application experienced a sudden drop in performance, causing disruption to the end users. Following the recent challenges, your manager has emphasized the need for preventive measures to avoid similar issues in the future.</p><p id="9d23efcf-71a3-45b1-bdcf-a7b1ffaa8727" class="">Which of the following observability strategies would be the most effective in detecting, investigating, and mitigating the underlying problem in the EKS cluster using metrics?</p><ul id="76bb6298-7c36-4472-937b-05c0b4d12dd3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Install the CloudWatch agent on your cluster to gather and display metrics from the control and data planes. Set alarms for anomalies and use filters and dashboards to spot unusual patterns.</mark><p id="c3df37e7-de1f-4262-99e1-b8396dcd3ab8" class="">Comments: On an EKS Cluster, the CloudWatch Agent collects metrics from both data and control planes. Visualize these on the CloudWatch dashboard and set alarms for performance issues.</p></li></ul><ul id="a50be7a3-982d-4435-ab0f-e0ad48786ffe" class="bulleted-list"><li style="list-style-type:disc">Analyze the control plane&#x27;s metrics and evaluate its scaling configuration for improvements.</li></ul><ul id="6abeb85c-3719-4445-a5de-253b883b4fdf" class="bulleted-list"><li style="list-style-type:disc">Use FluentBit to aggregate essential metrics and forward them to CloudWatch.</li></ul><ul id="380e7126-8e74-452d-aebd-b1c0badec295" class="bulleted-list"><li style="list-style-type:disc">Increase EKS cluster size and nodes using EKS Metrics data when anomalies are detected.</li></ul><p id="dc0de052-e98c-46b8-ab7c-f07e89378700" class=""><strong>Score: 1.00</strong></p><p id="27232359-9f39-4b57-ae5b-efbfb795c570" class=""><strong>Single Choice</strong></p><p id="71acb6da-25c1-42f1-a28f-48cd541cdb42" class="">9)</p><p id="41bf89fb-90a5-45f4-8fa7-a860b3f6c586" class="">You are a DevOps engineer at a financial services company. Your team is responsible for managing the company&#x27;s AWS EKS cluster, which hosts hundreds of critical microservices. You need to create a new node group for a microservice with high performance requirements and must be highly available.</p><p id="006b4f8b-390f-423d-a36c-5f99602c8526" class="">Which type of AWS EKS node group should you use?</p><ul id="02552c54-7b10-4d5a-b0a4-c9c8735d34d0" class="bulleted-list"><li style="list-style-type:disc">AWS Fargate node group</li></ul><ul id="71504232-2999-4ca4-a2cc-e384749e2d8d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Custom node group with on-demand instances</mark></li></ul><ul id="0557146f-cca2-4b0a-9158-71dd6aa1f56c" class="bulleted-list"><li style="list-style-type:disc">Managed node group with spot instances<p id="c8762ea8-6ebf-430a-8347-325b91665713" class="">Comments: A managed node group with spot instances is a good choice for workloads that can tolerate interruptions, but it may not be suitable for workloads with high performance requirements or that need to be highly available.</p></li></ul><ul id="93650129-cd7b-4985-8c32-5027b6ead329" class="bulleted-list"><li style="list-style-type:disc">Custom node group with spot instances</li></ul><p id="c692503d-b67e-4e1b-b4f1-619f5339a31a" class=""><strong>Score: 0.00Correct answer(s):</strong><strong><br/>• <br/></strong><strong>AWS Fargate node group</strong><strong><br/>• <br/></strong><strong>Custom node group with on-demand instances</strong><strong><br/>• <br/></strong><strong>Managed node group with spot instances</strong><strong><br/>• <br/></strong><strong>Custom node group with spot instances</strong></p><p id="783b17da-1971-4b2a-92fb-d7b82fe2a542" class=""><strong>Multiple Choice</strong></p><p id="ca723ab1-0402-4b35-9e97-b51b5297bcee" class="">10)</p><p id="dbabeff5-9498-4a84-ab49-c881d745f727" class="">You are the administrator for an EKS cluster that runs your company&#x27;s applications. To comply with secutiry requirements, you enabled network policies on your EKS cluster and implemented a default-deny policy obtained from the security team. After this change, the monitoring team is complaining that they are not getting application health metrics on their monitoring dashboard.</p><p id="682d7e3b-8824-4aaf-a80a-897bde8fe6e8" class="">Assuming that the monitoring pod runs in the same namespace as the application pods, how will you remediate this issue, while complying with security requirements? (Select TWO)</p><ul id="5cb677cc-2d93-4d85-96a2-41734cf7b062" class="bulleted-list"><li style="list-style-type:disc">Apply a default-allow policy to allow monitoring pods to get application health metrics</li></ul><ul id="16b9d931-649c-4005-9632-f5ef0441449c" class="bulleted-list"><li style="list-style-type:disc">Delete the default-deny policy from this namespace</li></ul><ul id="bc0800e8-68ac-4d13-a723-f3f4a9e219b6" class="bulleted-list"><li style="list-style-type:disc">Disable Network Policy</li></ul><ul id="88350bdf-0408-40f7-9e65-f22060f97bfa" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Add an Ingress policy to allow traffic from monitoring pod to application pods</mark><p id="503b7154-aea7-4385-92b0-875718f71ab5" class="">Comments: This allows monitoring pod to scrape metrics from application pods</p></li></ul><ul id="b4baaee9-8973-41ef-9ed9-5f25cc90d560" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Add an Egress policy to allow traffic from application pods to monitoring pod</mark><p id="2c3124d6-d72a-4129-8359-9a51031ac64b" class="">Comments: This will allow metrics to be sent from application pods to monitoring pod</p></li></ul><p id="9414c84c-9b30-444d-9bba-be2252440b59" class=""><strong>Score: 1.00</strong></p><p id="6d5d19a1-4136-4da7-8c6d-779a1c6dde51" class=""><strong>Single Choice</strong></p><p id="0174b161-7262-4d43-9e65-eba52fd44ec3" class="">11)</p><p id="b6c0f54c-bdc6-4e35-8e00-d02078957a15" class="">As a tech lead, you are tasked with selecting the right Kubernetes solution for your company&#x27;s needs.</p><p id="247ed197-8b5b-45f6-ab45-a0d0c603e89e" class="">Which of the following statements accurately describes the business value and features of EKS?</p><ul id="ce275aca-96b9-47bb-a21f-525e4bdf5e12" class="bulleted-list"><li style="list-style-type:disc">With EKS, you get full control over the underlying Kubernetes infrastructure, allowing you to customize it as needed.</li></ul><ul id="e11c2900-74b4-42e8-abcd-3be46de5a5b0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">EKS simplifies Kubernetes management by handling the control plane and providing automated updates, allowing your team to focus on application developments.</mark><p id="01cb2b4b-121c-4496-aec7-a89299b55059" class="">Comments: EKS indeed simplifies Kubernetes management by handling the control plane and providing automated updates. This allows your team to concentrate on developing and running applications within the Kubernetes cluster, making it a valuable feature.</p></li></ul><ul id="86a381af-3a75-47c2-b833-61ba002c9f60" class="bulleted-list"><li style="list-style-type:disc">EKS is exclusively designed for large enterprises and may not be suitable for smaller businesses due to its complexity.</li></ul><ul id="33788b31-71d8-4191-bd05-b02114db8212" class="bulleted-list"><li style="list-style-type:disc">EKS offers a highly cost-effective solution compared to other cloud providers, helping to reduce infrastructure expenses significantly.</li></ul><p id="d36f4e67-586e-4818-bd34-3f15f72fe1fc" class=""><strong>Score: 1.00</strong></p><p id="9f7293a0-36e5-4693-acba-147c58fd60d2" class=""><strong>Single Choice</strong></p><p id="f7b3e423-0dd6-4067-8f5f-e1ad1db7387f" class="">12)</p><p id="8e813df8-ae9d-4bfa-9721-c1c7399deea6" class="">You are asked to provide a high-level summary of the Kubernetes cluster architecture to your team.</p><p id="76760fcd-811f-4125-a758-2e2995590533" class="">Which of the following statements BEST describes the key components?</p><ul id="09267bbb-38c3-43d6-880e-b9d652c8fb76" class="bulleted-list"><li style="list-style-type:disc">A Kubernetes cluster has control plane nodes with components like the API server, scheduler, and controllers. It also has worker nodes to run applications, and a distributed data store like etcd.<p id="c49317b5-08a0-4856-a132-5694ce9b6b00" class="">Comments: Worker nodes don&#x27;t run the etcd. The control plane runs it.</p></li></ul><ul id="6a7142da-9871-4e5b-ba09-1c3e0c3c9042" class="bulleted-list"><li style="list-style-type:disc">The main components of a Kubernetes cluster are pods, services, replica sets and namespaces that all run on top of the nodes.</li></ul><ul id="67171c48-9c31-4eb2-9549-9b1759d70a63" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">The cluster contains a Kubernetes API server, etcd, controller manager, scheduler and DNS run on the master. Worker nodes run kubelet, kube-proxy and container runtimes.</mark></li></ul><ul id="426db8a1-6156-4cb3-b347-44faa352e66b" class="bulleted-list"><li style="list-style-type:disc">A Kubernetes cluster consists of a set of worker nodes and a master node that manages them. Worker nodes run pod containers while the master handles scheduling.</li></ul><p id="fb838582-07da-4168-b5a4-0e2c990bbc49" class=""><strong>Score: 0.00Correct answer(s):<br/><br/></strong></p><p id="8c23ce84-7e4c-49d7-b2bd-b4a4bd103b88" class="">13)</p><p id="129dacbf-8f25-4a1d-a9d6-4efce46e9484" class="">You are deploying a new application to Kubernetes. You need to understand the core concepts of Kubernetes to successfully deploy and manage your application.</p><p id="dc55af7e-c90e-421c-a086-6da7cae34fd2" class="">Which Kubernetes resource provides the BEST way to create and manage pods?</p><ul id="6e26f4a3-5739-47e1-a9b0-6fe76564cbc5" class="bulleted-list"><li style="list-style-type:disc">Pods</li></ul><ul id="b87b10d7-1176-4a72-9f4e-a064f469179d" class="bulleted-list"><li style="list-style-type:disc">Namespaces</li></ul><ul id="17ac4077-5b4c-472a-aef8-a7a70ae63195" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Deployments</mark><p id="2badef9a-c3c9-4781-8200-15b1d8e1c783" class="">Comments: Deployments are used to create and manage pods. They allow you to specify the desired state of your application, and Kubernetes will ensure that your application is in that state.</p></li></ul><ul id="7efaee72-e06f-4fa5-921d-14d427f7011f" class="bulleted-list"><li style="list-style-type:disc">Services</li></ul><p id="383b1dae-035b-4d56-9c4f-5955bd61ea8b" class=""><strong>Score: 1.00</strong></p><p id="746ca506-2b31-4e70-8ea6-82fe8cf41fe3" class=""><strong>Single Choice</strong></p><p id="8826b445-1309-4349-9b19-4dc0e24fadc3" class="">14)</p><p id="b9b00c0a-96bc-4946-a4d6-2b96bbdfae9b" class="">A new startup company recently launched an E-commerce site hosted on Amazon EKS cluster that has multiple Microservices. Their CEO asked operations team to build a solution to capture application logs across the cluster, so that they can identify what microservice can be improved.</p><p id="3cf5a975-1367-4764-b5ed-d26296897887" class="">What action should the operations team take in order to capture application logs generated across the cluster?</p><ul id="1407bb59-89e7-41ba-897b-ea360a7309ed" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Configure cluster-wide log collector agent like FluentBit to capture application logs and send them to a centralized logging destination like CloudWatch or Elasticsearch and build a dashboard.</mark><p id="7facbe37-0dad-4c99-a313-e32f07b5a837" class="">Comments: Cluster-wide log collector systems like Fluentd or FluentBit can tail log files on the nodes and ship logs for retention.</p></li></ul><ul id="80e0234a-c58c-42c6-ab13-312f643576e7" class="bulleted-list"><li style="list-style-type:disc">Setup AWS Distro for OpenTelemetry (ADOT) collector to capture application logs and store in Amazon Managed Service for Prometheus and visualize using Amazon Managed Grafana.</li></ul><ul id="3b433274-f42e-4493-9427-d1488097c47e" class="bulleted-list"><li style="list-style-type:disc">Turn on Kubernetes native solution to collect application logs and send them to a centralized logging destination like CloudWatch or Elasticsearch and build a dashboard.</li></ul><ul id="9eb3b711-f3f5-4680-af3a-bd3ad462a499" class="bulleted-list"><li style="list-style-type:disc">Setup CloudWatch Agent to capture application logs and store in Amazon Managed Service for Prometheus and visualize using Amazon Managed Grafana.</li></ul><p id="1c2f5653-f620-48f9-8b1c-1eb49d38d32f" class=""><strong>Score: 1.00</strong></p><p id="c3c18be5-8669-429e-9d36-4e05db676f5e" class=""><strong>Multiple Choice</strong></p><p id="fb176559-40cd-4153-ba21-0ce7a2532def" class="">15)</p><p id="1cc9baf4-32ca-48b3-b1b0-e2af6831c9db" class="">After deploying a EKS cluster you discover that all pods within the cluster can communicate with each other. Security has determined multi-tenant EKS clusters are acceptable, but individual pods should NOT have network access to other resources internal or external to the cluster. As the Solutions Architect, you decide to use the Amazon VPC CNI to enforce Network Policies to secure the traffic within the Kubernetes clusters.</p><p id="9ab7c1dd-4587-47f9-b422-0f1ceb44b0f0" class="">What elements of Network Policies can you use to restrict or allow pod&#x27;s traffic to other pods or external resources. (Select THREE)</p><ul id="6665f3f7-ab55-45af-944f-fddbeae063ed" class="bulleted-list"><li style="list-style-type:disc">Subnets</li></ul><ul id="67dc349e-0c4e-4f0f-a57f-6de2b0c1915f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Label Selectors</mark><p id="7725b86a-b4aa-4c8d-bbd1-a413d413b104" class="">Comments: A label selector in Kubernetes is a core grouping primitive that allows users to identify a set of objects. Label Selectors are native to Kubernetes cluster and are used by the Network Policy API.</p></li></ul><ul id="55c40280-3d09-4816-b86d-bb1051440d65" class="bulleted-list"><li style="list-style-type:disc">Security Groups</li></ul><ul id="42f82c2d-37fd-4edc-845b-4f922b1ea009" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">IP Blocks</mark><p id="27609f6c-4a27-45ee-9ad9-bbb0a9f4a271" class="">Comments: A network addressable range assigned to pods and resource that can be referenced in the Network Policy API.</p></li></ul><ul id="b00dd8ef-f787-4ef9-a214-52f9f34d4572" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Namespaces</mark><p id="f5765ce7-a48e-4eff-95f8-dec87c37ae7d" class="">Comments: Namespaces are a way to isolate, group, and organize resources within a Kubernetes cluster. Namespaces are native to Kubernetes cluster and are used by the Network Policy API.</p></li></ul><ul id="526fc525-8d02-470a-b796-27365cf8ccfa" class="bulleted-list"><li style="list-style-type:disc">Network ACLs</li></ul><p id="3067a05e-adbe-4ac6-ad81-690f234afc46" class=""><strong>Score: 1.00</strong></p><p id="abb05832-a79d-4a18-8bca-b9c993bc97d3" class=""><strong>Single Choice</strong></p><p id="4b923a93-dc8a-4479-9ce9-65a29fe23516" class="">16)</p><p id="ac22abef-25f6-470c-9773-ca15b7a1d6e3" class="">Your company is planning to move some on-premises applications to AWS. As a development lead, you consider moving these applications as containers to be a good idea.</p><p id="5616070c-e529-4aba-b8aa-632afbfcee20" class="">What is the primary advantage of using containers for deploying and managing applications?</p><ul id="a879114a-e383-4797-9972-6a03ba2d1421" class="bulleted-list"><li style="list-style-type:disc">Containers in Kubernetes enable seamless integration with physical hardware, eliminating the overhead of virtualization layers and providing direct hardware access.</li></ul><ul id="022415a9-82d5-41f7-a9db-700225d9a457" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Containers encapsulate applications and their dependencies, ensuring consistent runtime environments across development, testing, and production.</mark><p id="78c5b35d-1ec3-443b-b292-f78e07d462d1" class="">Comments: One of the main concepts of containerization lies in the encapsulation of applications, dependencies, and the ability to ensure consistent runtime environments.</p></li></ul><ul id="d911deb8-577e-45b6-b8a8-f10225d584d1" class="bulleted-list"><li style="list-style-type:disc">Containers in Kubernetes automatically optimize application code for performance, reducing the need for manual tuning and optimization efforts.</li></ul><ul id="03f0d472-94f1-4b47-a270-70eea6988788" class="bulleted-list"><li style="list-style-type:disc">Containers in Kubernetes simplify networking configuration by using software-defined networking (SDN) principles, reducing the need for complex routing tables.</li></ul><p id="f528659b-ffc3-4902-91c1-c98be9a7cb94" class=""><strong>Score: 1.00</strong></p><p id="04599381-2955-4b4d-9c05-f8bb39f070c0" class=""><strong>Single Choice</strong></p><p id="7b25f482-66fc-4604-978d-2a84c803f3c8" class="">17)</p><p id="2d12d39a-267b-493c-a3cd-c8c6199e5518" class="">You are the Kubernetes administrator for an organization that operates a shared cluster to host various applications. You need to ensure proper access control for different teams and different team members like developers, operators, security admin, etc., allowing them to manage resources in their namespaces while maintaining cluster-wide security standards.</p><p id="4de8cb4e-923d-48f2-95fb-ef6aac152d91" class="">Which configuration is the most efficient way to grant teams the right permissions within their namespaces and manage cluster-wide permissions?</p><ul id="2e3e4b04-0b9d-4685-8702-8714e7888737" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Use cluster role bindings to grant permissions at the namespace level.</mark></li></ul><ul id="b394f642-343d-4ccf-9a9e-9d8cc546cfd7" class="bulleted-list"><li style="list-style-type:disc">Create a common cluster role for all teams that complies with the organization&#x27;s security standards.</li></ul><ul id="2f85b15c-f9ec-4ba8-bf22-ce86c05f3994" class="bulleted-list"><li style="list-style-type:disc">Assign cluster-admin privileges to individual team members.</li></ul><ul id="142e9172-59b7-45b1-a0f1-d2aea333cdf7" class="bulleted-list"><li style="list-style-type:disc">Define custom roles for each team and bind them at the cluster level<p id="a533608f-92e9-4a6d-a65b-c5e7004252e6" class="">Comments: Defining custom roles for each team and binding them at the cluster level can be overly complex and does not follow best practices for namespace-level access control, which is the premise in the question.</p></li></ul><p id="2fcef5e1-ec20-4c3c-b328-fb548ad746e3" class=""><strong>Score: 0.00Correct answer(s):<br/><br/></strong></p><p id="6017967a-86de-4733-a999-0305e789e1d0" class=""><strong>Single Choice</strong></p><p id="e20d3f6a-fd2b-4ccb-bb53-f49bcc8354aa" class="">18)</p><p id="b3be55e3-68be-4098-b01d-26722e1874a6" class="">An e-commerce application team has more than 25 microservices running within a Kubernetes cluster. The platform architect for this Kubernetes cluster needs to expose 15 of these microservices to the internet.</p><p id="9773c5e5-be25-44df-ad65-7ea562d0334a" class="">What is the advantage of exposing these microservices via an Ingress resource compared to exposing them individually via a load balancer?</p><ul id="8f78e579-9418-42e7-913b-f0a55d4cd3b0" class="bulleted-list"><li style="list-style-type:disc">Loadbalancer has a max limit of 10 targets and cannot handle 15 microservices</li></ul><ul id="50f86337-fb3c-4466-a553-c537c9667bb8" class="bulleted-list"><li style="list-style-type:disc">Ingress resource is more performant when compared to load balancer and better for e-commerce applications</li></ul><ul id="e6004dcd-ed10-4505-9941-b954572949ff" class="bulleted-list"><li style="list-style-type:disc">Ingress resource is more secure than a Loadbalancer</li></ul><ul id="864ffa1e-2f94-4fc1-b5a8-a0bbf9aec37e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Ingress resource reduces the cost and complexity of managing individual cloud-native loadbalancers</mark><p id="35611ba2-7f53-437f-807e-e3e75c3d3444" class="">Comments: CORRECT - As described in the video, large-scale applications deployed as 100s of microservices should prefer to expose via an ingress. This way, a load balancer can handle external load balancing, and an ingress acts as an internal load balancer to route traffic to the appropriate Kubernetes service. This reduces the need for 100s of load balancers (one per service), thus reducing the cost and operational overhead of managing individual cloud native loadbalancers.</p></li></ul><p id="a717e0ec-8b35-4581-9124-72023e942f12" class=""><strong>Score: 1.00</strong></p><p id="e3e2cf35-6279-4124-a82d-c05df69b0218" class=""><strong>Single Choice</strong></p><p id="182143d7-8c1d-476a-a62e-acc7d8b6e6c2" class="">19)</p><p id="d896474f-fbc9-4240-8d0e-35a4036ef5e9" class="">You manage an EKS Cluster with one autoscaling group using an instance type that has an EC2 Instance Savings Plan and other autoscaling group using instance types that are on demand.</p><p id="db4c41f5-4fbc-4ddc-9bb1-d90964e833d8" class="">In order to optimize costs, which feature of Cluster Autoscaler can favour the autoscaling group covered by Instance Savings Plan to be used first in an scale-out event?</p><ul id="95871162-4252-4358-ab22-c52ad49f2667" class="bulleted-list"><li style="list-style-type:disc">Node Termination Handler</li></ul><ul id="11eeefa0-8a51-44c0-960e-f299a4827a81" class="bulleted-list"><li style="list-style-type:disc">Spot Instances</li></ul><ul id="d7ff9c7a-2c5d-4bf1-af53-fd3f46e2e0a6" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Priority Expanders</mark></li></ul><ul id="b6509929-551f-4801-9f6c-b63fb3977028" class="bulleted-list"><li style="list-style-type:disc">Weighted Provisioners<p id="40017f7e-a675-4d77-93ab-80d55e8a90a9" class="">Comments: It is the feature of Karpenter that allows you to favor certain instance types when scaling out</p></li></ul><p id="f5906fa2-9e5f-4c13-bdaf-a29c8b49e3b8" class=""><strong>Score: 0.00Correct answer(s):<br/><br/></strong></p><p id="2b3a9491-42bd-4eb5-9dbc-ee5042244b61" class=""><strong>Single Choice</strong></p><p id="379bc9b7-1d1e-4c07-b865-fdbd4cc3c5c8" class="">20)</p><p id="91fad1cb-c00d-4475-b19e-b0aefd3dd188" class="">You have developed a microservices based application that is being deployed to your Amazon EKS cluster. The application is deployed as multiple Kubernetes deployments and has various endpoints that need to be exposed outside of the cluster to allow for external users to make HTTP based API calls against. To reduce complexity for your end users, you would like to expose the different application endpoints on a single URL with different URL paths directing users to the proper endpoint.</p><p id="aacf7d61-e833-45e5-831f-de14c56a7bfd" class="">Based on these requirements, what is the best way to accomplish exposing the application to your end users?</p><ul id="39358460-ff86-4591-9e00-b7393bfb1a41" class="bulleted-list"><li style="list-style-type:disc">Create a service object of type ClusterIP</li></ul><ul id="8b45bf74-592f-476d-9273-6158a147cf73" class="bulleted-list"><li style="list-style-type:disc">Create a service object of type NodePort</li></ul><ul id="508bd4bb-780e-4c88-88c1-578ccbca10d5" class="bulleted-list"><li style="list-style-type:disc">Create service object of type LoadBalancer</li></ul><ul id="38472e8a-188e-49e5-8185-6d592e761c0d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Create an ingress object using the AWS Load Balancer Controller</mark><p id="ef29c82a-4a5e-4bd1-a498-4224a967779e" class="">Comments: Creating an Ingress object with the AWS Load Balancer controller will meet the defined requirements of allowing a single external endpoint with path based routing. The application is HTTP based and aligns with the Ingress&#x27;s layer 7 based routing capabilities.</p></li></ul><p id="e64cc8e2-bde8-4b66-9d5d-13c718a980a2" class=""><strong>Score: 1.00</strong></p><p id="585b1742-d864-4e38-8676-3b711409377f" class=""><strong>Single Choice</strong></p><p id="0f98abad-4c4a-4760-936f-fe672eb08e8c" class="">21)</p><p id="30328758-2e57-4bfc-97ae-64d4e15a20b8" class="">You are deploying a front-end web app pod called web-app-pod that will handle user traffic in a Kubernetes cluster. The development team wants to ensure the pod does not use too many resources.</p><p id="f6215688-1963-4965-925c-8b13e2d84053" class="">What is the most important thing to do when deploying web-app-pod?</p><ul id="9d1a91b8-71ab-4593-8350-8fb5963080fa" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Set resource limits on the pod so it doesn&#x27;t use too much CPU/memory.</mark><p id="b56a9059-67b8-4dca-962d-a702e0dea2dd" class="">Comments: Setting resource limits on a pod is important to ensure it does not use too many cluster resources.</p></li></ul><ul id="a8a59b31-5f40-4149-b30e-2ab6f70a3669" class="bulleted-list"><li style="list-style-type:disc">Ensure the pod has the proper Kubernetes labels so it can be discovered correctly.</li></ul><ul id="3edc3457-4f22-4b9e-9335-7899ea8c4ec4" class="bulleted-list"><li style="list-style-type:disc">Expose. The pod has a ClusterIP service, so other pods can access it.</li></ul><p id="d8bac216-6f02-43e8-80e1-c7352eeb00db" class=""><strong>Score: 1.00</strong></p><p id="0fb04553-62e8-4694-8c54-b4b4fa08c995" class=""><strong>Multiple Choice</strong></p><p id="e2bdb175-d3fd-43f6-aa7c-813bc856811a" class="">22)</p><p id="64a27635-6296-4bfc-9ca3-48f1d2031c7e" class="">Your organization&#x27;s software engineering team is new to containerizing applications and wants to know the artifacts to be included in their container images.</p><p id="9ca7c02b-0ddc-4025-9e7a-a1f3b78e7a8a" class="">Which of the following elements would you advise the Software Engineering team to include in their container images? (Select THREE)</p><ul id="b09edcc6-53f7-4568-8f77-73d60162bde0" class="bulleted-list"><li style="list-style-type:disc">Operating System (OS) Drivers</li></ul><ul id="92291d1d-4b27-4d32-b0d0-526af18d27c8" class="bulleted-list"><li style="list-style-type:disc">External volumes</li></ul><ul id="cad4acdb-e624-4279-ae65-4fb52bc4949c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Software Binary Files</mark></li></ul><ul id="ed04c2c9-1540-4d8f-b67d-f598dadcfff4" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Application Code</mark><p id="71e15c5b-f468-404a-9d87-5a53c949335b" class="">Comments: Typically, you want to have your application code part of the container image, especially if you are trying to containerize an application.</p></li></ul><ul id="13e2b7f9-173c-497a-b9e6-f3856e768089" class="bulleted-list"><li style="list-style-type:disc">Credentials<p id="256e4634-839f-4b2d-a49d-3752226e1349" class="">Comments: You don&#x27;t want to hardcode any username/password in your image. Use the environment variables to retrieve that information from outside the container.</p></li></ul><ul id="2868a30b-2683-42a5-a48d-c712a1442a81" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Software Libraries Files</mark><p id="9c437bc3-a850-41be-aa5b-d63f9bb17375" class="">Comments: Software Libraries are needed to run application code or other supporting software within the container.</p></li></ul><p id="d2e16057-be27-40b6-b11a-5864eb3f356f" class=""><strong>Score: 0.67Correct answer(s):<br/>Multiple Choice<br/></strong></p><p id="dd24e2e0-4e99-41e1-90d1-e95e27da2b28" class="">23)</p><p id="924532fc-f98a-48de-9e84-b11ae1b52f87" class="">A customer wants to expose an application to the internet. The application is running on multiple pods on EKS.</p><p id="76b79343-6c43-459a-ae06-1691497af977" class="">What options does the customer have? (Select TWO)</p><ul id="331b1140-8e3a-45c8-8ae6-a137db8ab6c8" class="bulleted-list"><li style="list-style-type:disc">Use a Kubernetes service of type LoadBalancer. The AWS Load Balancer Controller will provision a classic Load Balancer and expose the application to the internet<p id="19b7410b-f024-4022-898e-96b9a8819764" class="">Comments: AWS Load Balancer Controller can only provision Application LoadBalancers from ingresses, and Network Load Balancers from Services</p></li></ul><ul id="a956fe12-5a35-4fb1-9b56-ba42bc0ed8a7" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Use a kubernetes service of type ClusterIP. The AWS Load Balancer Controller will provision a Network Load Balancer and expose the application to the internet</mark></li></ul><ul id="47c20891-c2ac-4437-9da7-25a69d41b1a5" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Configure a kubernetes ingress object. The application is exposed to the internet through the ingress controller</mark><p id="d397c1d5-98f4-42bc-9d46-3d612d70312f" class="">Comments: The Ingress Controller is responsible to provide external access to the cluster. Provide an ingress object with the right routing configuration (path/host)</p></li></ul><ul id="de7a24ad-7cba-4b66-be57-cb350a865458" class="bulleted-list"><li style="list-style-type:disc">Manually configure a Load Balancer in front of the EKS cluster</li></ul><ul id="f4a6bf68-d214-48c4-a5ab-a1a2ef7871bd" class="bulleted-list"><li style="list-style-type:disc">Do nothing. The application is automatically exposed to the internet</li></ul><p id="9ca79e8b-b70d-44b0-8c1e-4ee2e373f4c8" class=""><strong>Score: 0.50Correct answer(s):<br/><br/></strong></p><p id="9de4b93a-7cab-4030-a43e-83dcdd48fad0" class=""><strong>Single Choice</strong></p><p id="607a67e8-780a-4c17-ac38-d9c8ee971647" class="">24)</p><p id="239b936d-6f50-4b37-b1dd-df2689ba746c" class="">As a Solutions Architect, you are asked to design a Kubernetes environment on AWS for a customer.</p><p id="0a93b9d1-bec9-48d8-bbee-3238729d1ddc" class="">Which of the following statements BEST describes the components of an EKS cluster?</p><ul id="714888cc-1796-4afa-8332-3287170af586" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">EKS clusters contain master nodes that manage scheduling and orchestration, while application pods run on separate worker nodes.</mark><p id="9b3489dc-b7ca-4add-b58d-d5224ff47d6b" class="">Comments: EKS handles provisioning and managing the Kubernetes control plane, while users are responsible for worker nodes that run application workloads. The control plane and worker nodes comprise the full EKS architecture.</p></li></ul><ul id="11348752-71d1-4c9e-8a58-e7cb183bdc03" class="bulleted-list"><li style="list-style-type:disc">EKS does not provide a managed control plane - users must deploy their own Kubernetes masters to create a complete cluster.</li></ul><ul id="29df0ec1-bf4e-43ed-a8bb-5c2000959948" class="bulleted-list"><li style="list-style-type:disc">EKS clusters contain worker nodes that run pods, but the control plane runs on customer infrastructure.</li></ul><ul id="4bb8360e-80e9-40b0-850e-bee882b578f1" class="bulleted-list"><li style="list-style-type:disc">The customer has full control over both the master and worker nodes, being responsible for managing the underlying EC2 instances.</li></ul><p id="14862893-f300-48cf-9170-4e862838af36" class=""><strong>Score: 1.00</strong></p><p id="6264140f-3cc8-42c2-aad1-dd6aaf7cf2f9" class=""><strong>Single Choice</strong></p><p id="c0c9afca-c812-4214-94ae-7b977b4e4f9c" class="">25)</p><p id="d2e954c0-5617-40c9-91a9-4d442a2dc155" class="">You are working on a microservice application as a developer. While testing in your local environment, you found that your application container needs at least 128 MiB memory to run on the Kubernetes cluster efficiently. You need to prepare this application to run on a Kubernetes cluster.</p><p id="54fc2ec3-ffba-4483-bd5d-08e9b57c8776" class="">How will you ensure your application container will get sufficient memory when deployed in a Kubernetes cluster?</p><ul id="ad89b4d0-1a3b-42c6-9932-388b32065408" class="bulleted-list"><li style="list-style-type:disc">Configure the kube-scheduler on the cluster.</li></ul><ul id="c121afef-91ea-4193-943c-a476314f04b0" class="bulleted-list"><li style="list-style-type:disc">Configuring specific resource requirements for a Pod is not supported in Kubernetes.</li></ul><ul id="da168ea6-911f-46ff-b3e6-13c593c54ae7" class="bulleted-list"><li style="list-style-type:disc">Specify an environment variable named MEM_REQ with value &quot;128Mi&quot; in your container definition YAML.</li></ul><ul id="9e2d5116-401c-4758-a78e-a48d38d42fda" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Specify resource request under &quot;spec.containers[].resources.requests.memory&quot; with value &quot;128Mi&quot; in your container definition YAML.</mark><p id="adea74fd-7943-4d71-9af8-ee11fae8f4fe" class="">Comments: You can specify memory and CPU requirements under `spec.containers[].resources.requests.memory` and `spec.containers[].resources.requests.cpu` configuration of the container definition YAML. When you create a Pod, the Kubernetes scheduler selects a node for the pod to run on. Each node has a maximum capacity for each of the resource types: the amount of CPU and memory it can provide for Pods. The scheduler ensures that, for each resource type, the sum of the resource requests of the scheduled containers is less than the capacity of the node. Note that although memory or CPU resource usage on nodes is very low, the scheduler still refuses to place a Pod on a node if the capacity check fails. This protects against a resource shortage on a node when resource usage later increases, for example, during a daily peak in request rate.</p></li></ul><p id="336dbd55-a4d6-4526-a725-8574af183b33" class=""><strong>Score: 1.00</strong></p><p id="727fe1d5-fe33-41e0-b2ac-5458da3e8e35" class=""><strong>Single Choice</strong></p><p id="31c8e594-46f6-47f2-b1ab-65866ee0048b" class="">26)</p><p id="d1701ff1-8193-4e92-a36b-7d13be74eb91" class="">The Development team on Company A regularly pushes new images directly to ECR for Deployment. With Company A&#x27;s recent concerns for security, specifically with common vulnerabilities and exposures, the DevOps team is tasked to create a plan to scan these images as soon as they are pushed to ECR AND have reports on vulnerabilities and exposure findings available on SecurityHub for the Security team.</p><p id="b7692226-4608-4e39-afd4-720ea6ac4184" class="">How can the Devops team address ALL the requirements of this task?</p><ul id="39a0ad87-e0ea-47f9-9d04-d486f817628a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Enable Amazon Inspector, when a new image is pushed and automatically scanned, the reports will be available on SecurityHub.</mark><p id="833e8296-3266-4a29-839d-d50e7264b0b1" class="">Comments: As mentioned in the video, when Amazon Inspector is enabled, images pushed to ECR are automatically scanned and the reports are sent automatically to SecurityHub as well.</p></li></ul><ul id="fca5e047-42b8-4cde-8bdf-3df121de1c32" class="bulleted-list"><li style="list-style-type:disc">Scan the image using Hadolint, save the reports on a txt file, send to the Security team when requested.</li></ul><ul id="6b67beed-60d2-4695-ab26-8492b0d3c579" class="bulleted-list"><li style="list-style-type:disc">Scan the image using Hadolint, when a new image is pushed and automatically scanned, the reports will be available on SecurityHub.</li></ul><ul id="4b35ccc7-e9fe-4a05-834b-1e967d28b245" class="bulleted-list"><li style="list-style-type:disc">Enable ECS, when a new image is pushed and automatically scanned, the reports will be available on SecurityHub.</li></ul><p id="aaa58ca3-16a5-4092-889a-7762c7621bed" class=""><strong>Score: 1.00</strong></p><p id="289f1b23-3243-4bd6-b298-1c5182e523e9" class=""><strong>Multiple Choice</strong></p><p id="d9ee089e-a9f5-455d-840e-7af286526a01" class="">27)</p><p id="f8f58eb6-b774-4eb2-8585-0546c32e2845" class="">Your team has decided to move to a microservices architecture running on Kubernetes. You are tasked with deploying a new Kubernetes cluster running on AWS.</p><p id="553587ed-b3f6-4bcd-ac18-a5543c778edd" class="">Which of the following statements describes the functions of a control plane? (Select THREE)</p><ul id="6d2e4511-d040-496e-92ab-8bcd16532f3c" class="bulleted-list"><li style="list-style-type:disc">Control plane manages the container runtime engine, which is responsible for running containers.</li></ul><ul id="9da028a8-7f0e-46d1-89d9-c170bfb4fc05" class="bulleted-list"><li style="list-style-type:disc">Control plane interacts with data plane nodes using kube-proxy, an agent deployed on each node to monitor the health of data plane nodes.</li></ul><ul id="88b2b8b1-df96-4dfe-b556-5677187e1e00" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">The main components of a control plane are - API Server, Scheduler, Controllers, etcd.</mark><p id="fbe696a7-5855-4d98-b7dc-5ecaa8fe2900" class="">Comments: These are the main components of a Kubernetes control plane.</p></li></ul><ul id="d6961e11-9182-48b4-8ed9-ec2c75dc35f3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Control plane is responsible for scheduling pods on specific nodes according to automated workflows and user-defined conditions.</mark><p id="d04fe25a-dfc2-414c-91b8-b2ab800c5857" class="">Comments: The scheduler is a component in the control plane responsible for scheduling pods to nodes.</p></li></ul><ul id="3daae82e-33c9-4e6e-bcaa-fe9506f7f136" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Control plane manages the state of the Kubernetes cluster.</mark><p id="aca23cfc-ca51-4d13-9a59-cf4d2a8c3790" class="">Comments: Control plane is responsible for managing the cluster state and ensuring that the current state is equal to the desired state.</p></li></ul><p id="b83eb8bf-7247-4d0a-8401-03bca73a7fc2" class=""><strong>Score: 1.00</strong></p><p id="253e542d-9dc5-42b5-aea6-8ab19d59b8b4" class=""><strong>Single Choice</strong></p><p id="48147fcc-006f-4332-b6f6-0d2dcdedf643" class="">28)</p><p id="78ba118e-963d-48cc-ba24-19d8ae967876" class="">You are teaching a class on containerization to a group of aspiring software developers. To assess their understanding of container concepts and features, you decide to ask the following question.</p><p id="9081f940-6bf9-46db-a16e-f70eefbca05e" class="">Which of the following BEST describes the key concepts and features of a container?</p><ul id="6756b09e-fe21-4d2a-82b8-0d8ed6e4fc72" class="bulleted-list"><li style="list-style-type:disc">Containers are only compatible with Windows-based applications and cannot run Linux-based software.</li></ul><ul id="677b8ce3-679c-4467-a93f-5a8961d89c97" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Containers encapsulate both the application code and its runtime dependencies, ensuring consistency across different environments.</mark><p id="71520509-16c8-4e22-9d24-0fdd1875f00c" class="">Comments: Containers encapsulate the application code and its runtime dependencies, ensuring consistency across different environments. This is a fundamental concept of containers.</p></li></ul><ul id="4b9e5f66-c583-4c11-ba7f-578243eba81c" class="bulleted-list"><li style="list-style-type:disc">Containers are primarily used for data storage and do not execute applications.</li></ul><ul id="e937cf54-a831-4f10-aa68-4c4ef69bef3c" class="bulleted-list"><li style="list-style-type:disc">Containers are virtual machines that emulate the entire operating system, including the kernel.</li></ul><p id="da9a0d27-a1e7-45d0-8746-2a8eedc58791" class=""><strong>Score: 1.00</strong></p><p id="424c894c-87fb-40b8-997f-1bc8b2ac4c70" class=""><strong>Single Choice</strong></p><p id="f110626d-4fe0-41da-a9f0-2a62ee87fd55" class="">29)</p><p id="f902f102-9b7a-4f1b-b4ea-01ab921635b9" class="">You have developed a micro-services based web application that is being deployed to your Amazon EKS cluster. The application has multiple services that need to be exposed externally. You have decided that exposing the application endpoints using a Kubernetes Ingress controller and AWS ALB would meet all requirments. A central administration team deployed the EKS cluster you are leveraging and is using the default configuration, with no additional components installed.</p><p id="b2799b65-49b0-490d-8045-5b1b9c6eb669" class="">You have created a Kubernetes Ingress manifest with the proper configuration options for the ALB and your applications, but upon applying the manifest, nothing happened. No load balancer was created and your application is not accessible externally.</p><p id="fa3696bb-633d-47a4-9538-466d3d949835" class="">What is a potential reason that your ingress resource is not being satisfied?</p><ul id="3e8d9332-0ee7-4d18-aa8a-0b18e611bb3c" class="bulleted-list"><li style="list-style-type:disc">A NLB must be used with an Ingress resource, not an ALB.</li></ul><ul id="ad105d13-84ec-4948-8b9c-7370309f68d4" class="bulleted-list"><li style="list-style-type:disc">The ALB must be created prior to the Ingress resource being applied.</li></ul><ul id="b5b55422-89e2-49d6-9362-80d9d79f36b2" class="bulleted-list"><li style="list-style-type:disc">An ingress resource should not be used for this use case. A service of type LoadBalancer should be created instead.</li></ul><ul id="afc98048-ac97-4eb2-ba90-d2ef63b6e8e8" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">The AWS Load Balancer Controller was not installed on the EKS cluster.</mark><p id="85782bc8-9589-4eaa-9d13-011176e67539" class="">Comments: You must have an Ingress controller to satisfy an Ingress. Only creating an Ingress resource has no effect.&lt;br&gt;&lt;br&gt;EKS clusters do not come with the AWS Load Balancer Controller installed by default.</p></li></ul><p id="880b4ecd-bfb3-4796-93b9-df0675d61532" class=""><strong>Score: 1.00</strong></p><p id="90c87e64-e74d-40db-b3c2-bf0e5e2bf8df" class=""><strong>Multiple Choice</strong></p><p id="483aaf05-5ba3-4caa-a5f8-3f5c7a9937c8" class="">30)</p><p id="9faa0b1f-456b-4550-b56d-496c6f36b26a" class="">Engineers working for a SaaS company noticed one of their Microservices running on EKS is sending packets to an unknown IP address. After a deeper investigation, they realized the application container had been compromised.</p><p id="a9dfbc41-aad5-46cd-92bd-92ba583f3e93" class="">Knowing their deployment pipeline runs container image scanning, what are the possible causes for the breach? (Select Three)</p><ul id="911201e9-5b12-4550-b2a3-6f32ea52720a" class="bulleted-list"><li style="list-style-type:disc">Social engineering hack</li></ul><ul id="4e48730f-724b-4ecc-8ded-f8f88e1c0ee6" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Embedded malware</mark><p id="5ce08894-c481-43f1-ad6f-1c53b50de230" class="">Comments: Because malware scanning is based on signature sets and behavioral detection heuristics of actual known attacks. A new malware will probably escape detection.</p></li></ul><ul id="a3647e71-c77c-4a36-a3bf-45b0f43ef51d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Zero-Day Vulnerability</mark><p id="b471ed5a-1ce2-4d88-8a38-2f655b7c1fc9" class="">Comments: Image scanning is based on known CVEs published by multiple trusted organizations. If a vulnerability is not known it will not be in the published database and will missed by image scanners.</p></li></ul><ul id="93872d98-e4a1-4794-956c-8ccec414c67e" class="bulleted-list"><li style="list-style-type:disc">Using immutable tags for images</li></ul><ul id="8144473a-7f3f-49b0-9906-d71ce7efd7ec" class="bulleted-list"><li style="list-style-type:disc">Distroless Images</li></ul><ul id="92ef26b7-c5af-44a6-a602-d38990b9fada" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Privileged escalation due to wrong configuration</mark><p id="714ea2df-1a96-444d-b899-4d7646500de3" class="">Comments: Adding a user as part of the docker group could lead to escalation of privileges to root access.</p></li></ul><p id="2bd51c51-39a9-4ef6-8fa9-3d5847d4152c" class=""><strong>Score: 1.00</strong></p><p id="9c1296ef-42a5-4619-bde8-500586526f8c" class=""><strong>Single Choice</strong></p><p id="4538d1b3-02cf-435a-bc43-6c213894d2f6" class="">31)</p><p id="d1120f2c-0893-4926-b94f-9d0cd89c7ea4" class="">A DevOps engineer needs to revisit some recently deployed multiple web applications on Amazon EKS. Each web application was exposed with NodePort service type with URL path using AWS Application Load Balancer (ALB) and Amazon Route 53 to connect customers&#x27; requests to the web applications. Web applications must handle HTTP/HTTPS traffic and be reachable on the Internet.</p><p id="d99ed08a-05ef-4a7f-8b99-19e74ec07c19" class="">Which recommendation is MOST likely cost-effective and has a reduced security risk?</p><ul id="32568e38-f517-46d3-85d2-7177e29f578c" class="bulleted-list"><li style="list-style-type:disc">Create Service resource for each application. Change the service type to NodePort.</li></ul><ul id="a1d96b31-cc11-4762-b87a-cceaabee0b41" class="bulleted-list"><li style="list-style-type:disc">Create multiple Ingress resources. Change the service type to ClusterIP.</li></ul><ul id="ab8f6cbb-0ddb-42fd-a001-38def2f17893" class="bulleted-list"><li style="list-style-type:disc">Create Service resource for each application. Change the service type to LoadBalancer.</li></ul><ul id="bbfa318b-0db1-4772-b6a1-36bd353b7970" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Create single Ingress resource with multiple routing rules. Change the service type to ClusterIP.</mark><p id="d8b59a42-b2f7-43d1-b564-dd2ceef0d322" class="">Comments: This will create one ELB for all the applications and support HTTP/HTTPS traffic. You save on cost and reduce security risk.</p></li></ul><p id="ad3b3000-cffd-4a83-9540-33b6297ec002" class=""><strong>Score: 1.00</strong></p><p id="a7b58aa3-01e0-4f03-aded-640340f3433b" class=""><strong>Single Choice</strong></p><p id="f57b2ee6-8b1d-4946-869b-19612c98f2d1" class="">32)</p><p id="d0ecedd6-1c76-41a5-b25f-25d25fd8a3f3" class="">A DevOps engineer is setting up a GitOps pipeline using GitHub Actions to enable the Deployment of microservices to their EKS cluster. As a consultant, you are asked how to configure the EKS cluster credentials in the GitHub Actions workflow.</p><p id="bb249eb1-6f8e-48b1-ac9f-403c51279210" class="">What will you advise?</p><ul id="4d738424-ed1e-45d3-b025-2475b64f3176" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Store AWS Access Key and Secret Key as secrets in the GitHub repository, configure environment variables to use these secrets along with the EKS cluster details (name, region) to connect to EKS cluster</mark><p id="8ae220b1-ee55-489c-842f-7423b6bc652f" class="">Comments: As shown in the demo in the course video, this is the correct approach of storing ACCESS and SECRET keys in a GitHub secret and referencing them as env values in the workflow, along with cluster details.</p></li></ul><ul id="2e96ab90-3c72-4407-a1e4-46b000aa866a" class="bulleted-list"><li style="list-style-type:disc">Configure GitHub Actions workflow to use an IAM role that is authorized to connect to the EKS cluster</li></ul><ul id="59fb4f6d-d548-4a80-9964-b6bf5da7c55b" class="bulleted-list"><li style="list-style-type:disc">Configure GitHub Actions workflow to use a kube config stored as a GitHub secret in the source code repository</li></ul><ul id="ac91e9a3-8553-4970-a96b-d7fcdf702cba" class="bulleted-list"><li style="list-style-type:disc">The username and password for the EKS cluster administrator can be stored as environment variables and referenced by the GitHub Actions workflow</li></ul><p id="47ec5e2a-727f-456a-a0c8-63013012cb7d" class=""><strong>Score: 1.00</strong></p><p id="f541b7dd-41f3-4c75-ab07-ee627b88b355" class=""><strong>Multiple Choice</strong></p><p id="8888acb9-01ed-4dfb-91ae-9f98d1918591" class="">33)</p><p id="a0f8c322-c1d9-46a6-b502-998b90c73266" class="">You&#x27;ve created an EKS cluster and then created a node group in the cluster. You noticed that there are no worker nodes visible inside the EKS cluster. There are EC2 instances being created in the EC2 management console. You&#x27;ve performed troubleshooting and observed that the EC2 instances have no IAM policies attached.</p><p id="b1d04ccd-ec88-4d27-b8e1-e98a642c52c5" class="">Which of the following policies would you attach to the worker node IAM role to help worker nodes join the EKS cluster but not have permission to do anything else.? (SELECT TWO)</p><ul id="682f7ade-9d03-4c89-bcd5-75da0ba44d9d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">AmazonEKSWorkerNodePolicy</mark><p id="4613d3df-669f-4c60-8633-43a42cbbe2e1" class="">Comments: AmazonEKSWorkerNodePolicy is an AWS managed policy that: This policy allows Amazon EKS worker nodes to connect to Amazon EKS Clusters.</p></li></ul><ul id="f13c9fe0-2a43-4bbc-a3f6-773699ef1ba8" class="bulleted-list"><li style="list-style-type:disc">AmazonEC2FullAccess</li></ul><ul id="bf1e2172-1b26-41e2-ad01-b32f8a056b3d" class="bulleted-list"><li style="list-style-type:disc">AmazonEKSClusterPolicy<p id="5a7ea3ea-cbad-4265-8e97-0ceac2eea250" class="">Comments: This policy provides Kubernetes the permissions it requires to manage resources on your behalf. Kubernetes requires Ec2:CreateTags permissions to place identifying information on EC2 resources including but not limited to Instances, Security Groups, and Elastic Network Interfaces. This policy is not required by worker nodes to join the EKS cluster.</p></li></ul><ul id="0df4333d-1d1c-4ba2-96a4-364529ca119a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">AmazonEC2ContainerRegistryReadOnly</mark></li></ul><ul id="7ee4cece-1ca3-42fb-b1e2-26a9897ca121" class="bulleted-list"><li style="list-style-type:disc">AdministratorAccess</li></ul><p id="57fab0df-bb77-4b57-b60d-4aa4e292045e" class=""><strong>Score: 0.50Correct answer(s):<br/><br/></strong></p><p id="a913704e-ae67-4f62-96c0-9a2bf737d05f" class=""><strong>Single Choice</strong></p><p id="3965922d-438f-4159-919d-3918ff2e5a23" class="">34)</p><p id="79ad5149-9981-4c01-9c68-86d807c30d0a" class="">Your team manages an Amazon EKS cluster. The nodegroups are all in private subnets. You have a non-HTTP application running on TCP port 5000.</p><p id="999c0dd7-4908-4a11-b8ba-3feea863f04b" class="">How can you expose this application to allow access over the public internet?</p><ul id="e2de8f2e-0d4e-4db7-87f2-b9f43aa95688" class="bulleted-list"><li style="list-style-type:disc">Create an endpoint using Kubernetes Service with Type = ClusterIP.</li></ul><ul id="75172fef-8ae8-4069-90d2-ec5281c83f38" class="bulleted-list"><li style="list-style-type:disc">Create an endpoint using Kubernetes Service with Type = NodePort.</li></ul><ul id="febf0271-e3c3-41e3-9e36-160259f3b6b4" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Create an endpoint using Kubernetes Service with Type = LoadBalancer setup to use a NLB (Network Load Balancer)</mark><p id="b25aa39e-ce18-468a-babe-98202e87dbc2" class="">Comments: LoadBalancer service with type NLB can be used which will allow communication for non-HTTP application over public internet.</p></li></ul><ul id="94cbc52c-6730-4a24-9ed0-f32de523b1ba" class="bulleted-list"><li style="list-style-type:disc">Create an endpoint using Kubernetes Ingress.</li></ul><p id="d559c29d-6fd1-47d5-ad33-b0b0e37d9788" class=""><strong>Score: 1.00</strong></p><p id="bd00b7ee-09cb-43a3-a02e-34f6b37ee3d8" class=""><strong>Single Choice</strong></p><p id="df47f289-cd41-48fc-aa72-41505b3d1289" class="">35)</p><p id="e6788e55-cd90-4036-840b-ec5cacedb180" class="">A company is planning to containerize an existing Java application. Your team needs to review and prepare the code for containerization.</p><p id="b63e0fed-77fe-432f-b80d-a3f630460f12" class="">Which component will your team be responsible for?</p><ul id="f2833d0c-9018-44af-b287-64a4827a6666" class="bulleted-list"><li style="list-style-type:disc">Container runtime</li></ul><ul id="216669b4-b46e-4cf8-9efb-3fa4aede87b3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Container image</mark><p id="6a370f12-93c9-43c5-b146-a7f14fecf790" class="">Comments: A container image contains the application code, application configuration, and the application library dependencies. The container image is pushed to a container registry. Your team is responsible for porting the code, configuring the application, and providing the application libraries into the container, so it can later be instantiated by the container runtime.</p></li></ul><ul id="4e088fdd-119c-4201-ac0e-16291b714865" class="bulleted-list"><li style="list-style-type:disc">Container instance</li></ul><ul id="6db3d37d-ca7a-432e-ba15-5467c2320b6b" class="bulleted-list"><li style="list-style-type:disc">Container registry</li></ul><p id="77b9ed09-0e6c-4dac-9112-5598178daff1" class=""><strong>Score: 1.00</strong></p><p id="0576e6c5-e732-4765-ba2d-7fe0d5080466" class=""><strong>Single Choice</strong></p><p id="2efde733-3fc4-4fdf-9a48-bd43b0438ab9" class="">36)</p><p id="327a6b28-a6d1-4349-91d0-b63f78c3c14f" class="">You are the cluster administrator for your organization&#x27;s EKS cluster. You have been informed that your Organization purchased an EC2 instance savings plan for m6g.2xlarge and c6g.2xlarge instances.</p><p id="3db5ced6-bbd5-4196-8871-42402ca7c4cb" class="">How will you influence Karpenter to prefer these instance types first during a scale-out event?</p><ul id="bb022384-91df-4bfb-b805-9fab4248b58a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Use Weighted provisioners to prefer savings plans instance types first</mark></li></ul><ul id="d222ea50-c6db-425d-9767-3a040f5d5f78" class="bulleted-list"><li style="list-style-type:disc">Create managed nodegroups consisting m6g.2xlarge and c6g.2xlarge to ensure EC2 Instance savings plans are utilized. Karpenter will use this existing capacity to schedule pods<p id="84fba014-a8ad-464d-b21d-5028227dc8ca" class="">Comments: INCORRECT - This is not a cost-effective solution, as it will create an overprovisioned cluster.</p></li></ul><ul id="be0f6345-76a9-41e9-b73a-ab4f53ac4e91" class="bulleted-list"><li style="list-style-type:disc">Limit Karpenter provisioners to only use m6g.2xlarge and c6g.2xlarge</li></ul><ul id="6a1e9dfa-1631-4919-9949-f71a8f4d0ba4" class="bulleted-list"><li style="list-style-type:disc">Karpenter cannot prefer specific instances during scheduling</li></ul><ul id="4cc4a18e-cdb1-4c9c-a749-caf2ec31bcfb" class="bulleted-list"><li style="list-style-type:disc">Use Karpenter&#x27;s priority expanders to prefer savings plans instance types first</li></ul><p id="3a979627-d52f-42ba-93fa-fe205f4a9bd1" class=""><strong>Score: 0.00Correct answer(s):<br/><br/></strong></p><p id="eec692f1-f658-4d6c-89cb-93f16874d2f1" class=""><strong>Single Choice</strong></p><p id="ebc1de81-2fa8-437a-a143-03da7db1a230" class="">37)</p><p id="b2448c80-37e1-4954-8adf-cc01e6bf2ac1" class="">As a developer, you have deployed your application to an Amazon EKS cluster. You cluster&#x27;s administrator has explained that the cluster has been configured with Cluster Autoscaler to automatically scale cluster nodes as needed to meet the demand of workloads.</p><p id="c4e0793d-dd53-4826-9187-583b867632d4" class="">You application experiences varying levels of demand with higher levels of traffic occurring during business hours. Since the Amazon EKS cluster has been configured with Cluster Autoscaler your expectation was that your workloads would automatically scale out to meet required demand; however, you have noticed that the number of application pods your deployment is using remains static despite the amount of load on your application.</p><p id="7bda4a32-109a-4a2d-b984-acad6803ddc1" class="">The configuration of what resource may be missing that would allow the automatic scale out of application pods based on utilization?</p><ul id="2e13457d-016c-451c-8553-03a7b7cb89d2" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Horizontial Pod AutoScaler</mark><p id="f6e0a6c4-46d9-4f9b-83bd-1fc70c7c68ee" class="">Comments: HPA will add and remove pods based on selected metrics.</p></li></ul><ul id="9300a9c3-85d2-4b6f-9e93-6dc4697e3d15" class="bulleted-list"><li style="list-style-type:disc">ReplicaSet</li></ul><ul id="562a1a4e-caf7-4d16-9264-2c8a2fe4fe3f" class="bulleted-list"><li style="list-style-type:disc">Vertical Pod Autoscaler</li></ul><ul id="46c54e4d-b2c6-4a34-8eb6-903c840e843f" class="bulleted-list"><li style="list-style-type:disc">Karpenter</li></ul><p id="1984e9fd-3197-4d94-b752-9cde17f76b26" class=""><strong>Score: 1.00</strong></p><p id="b975700a-4ff8-4028-b4e9-3118d0bd007e" class=""><strong>Single Choice</strong></p><p id="5a1c4001-2776-4ed5-9e22-742a6a11e22f" class="">38)</p><p id="031eb738-b161-4781-926b-05472148ff30" class="">Your organization is concerned about unusual network traffic involving two pods in its EKS cluster. The DevOps team needs to create a Network Policy to block ingress and egress connections on Pods A and B only, both running on the same namespace. A deny all ingress and egress Network Policy is applied to the pod&#x27;s namespace but, testing shows that ALL pods in the namespace have been blocked.</p><p id="62e67380-2b9c-45a3-9fcd-74e549810d5f" class="">What should the Devops team do to fix the Network Policy and block only Pods A and B communication?</p><ul id="77ee8909-37dd-4211-b007-302a52922922" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Add labels to both Pods A and B, edit the Network Policy&#x27;s field named podSelector to match the newly created labels.</mark><p id="fa3fa8a2-7d0e-43b8-b2d7-91979d65448f" class="">Comments: Not setting a correct podSelector field on your Network Policy will result in it not matching the desired pods, so in fact blocking all namespace traffic. Setting labels to the Pods and adding those to the podSelector field in the Network Policy would make sure the pods are matched by the deny all policy and traffic to only Pods A and B is blocked.</p></li></ul><ul id="6fcabe97-0b00-4f1f-90c1-3cc7824f1388" class="bulleted-list"><li style="list-style-type:disc">Restart Pods A and B for the Network Policy to take effect.</li></ul><ul id="8bb0d80d-7413-41f7-9bf8-a156c583c18c" class="bulleted-list"><li style="list-style-type:disc">Remove policyType Ingress from the Network Policy, so that it blocks all ingress and egress traffic for Pods A and B.</li></ul><ul id="fa44ef5b-81ad-4bd4-9167-17076e25a17b" class="bulleted-list"><li style="list-style-type:disc">Remove policyType Egress from the Network Policy, so that it blocks all ingress and egress traffic for Pods A and B.</li></ul><p id="dc14ce5e-4bdf-4356-9e56-b06a4aabf96f" class=""><strong>Score: 1.00</strong></p><p id="f3cf6763-eff1-42f6-ad74-75dd852b2521" class=""><strong>Single Choice</strong></p><p id="ea8a0eb5-af7b-4e99-bc8b-49a0a9619761" class="">39)</p><p id="caa23e4a-5766-458e-b812-1c6121bb2bb6" class="">A company is running a microservices application on Amazon EKS. The application consists of a front-end service, several back-end services, and a MongoDB database for persistence. The DevOps engineer wants to deploy MongoDB as a stateful workload.</p><p id="2554cf53-ade0-47c2-ae0d-e66e81c7a634" class="">Which Kubernetes resource should be used to deploy MongoDB for data persistence?</p><ul id="5607c6c7-97da-4d9c-96a4-f0de26ed4387" class="bulleted-list"><li style="list-style-type:disc">DaemonSet</li></ul><ul id="595eb702-493c-4c27-879a-a45cd971f9fa" class="bulleted-list"><li style="list-style-type:disc">Deployment</li></ul><ul id="9fcf4119-541a-47b3-84dc-1ea182105a7a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">StatefulSet</mark><p id="fb90fb15-e130-4d28-9246-c34c95471c3f" class="">Comments: StatefulSets are used for stateful applications like databases that need stable network identifiers, persistent storage, ordered Deployment and scaling, and graceful deletion.</p></li></ul><ul id="e00c4ab5-490f-49f6-8a4f-8a80e630a019" class="bulleted-list"><li style="list-style-type:disc">ReplicaSet</li></ul><p id="d29a8323-44f0-4423-bff3-2e9925b39a98" class=""><strong>Score: 1.00</strong></p><p id="81101e4b-19b8-4622-ab1b-3c6881ec41c7" class=""><strong>Single Choice</strong></p><p id="26be0c08-11cb-4907-8719-00ba1876e439" class="">40)</p><p id="c4a0b959-9cac-465a-9385-110e9b36b504" class="">You are responsible for managing the company&#x27;s Kubernetes cluster, which hosts a handful of microservices. You are planning to add new nodes to the cluster to meet the increasing demand and are considering using two types of nodes: worker nodes and control plane.</p><p id="fab524e2-07a1-48d0-94de-5b8d8b09c616" class="">What are the key differences between worker nodes and control plane?</p><ul id="01fb8d47-9920-43c8-a46c-cb5c46d4d8c9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Worker nodes are responsible for running containerized applications, while the control plane is responsible for managing the cluster.</mark><p id="f271f530-9a0c-4779-bce6-992c5d80d248" class="">Comments: Worker nodes are responsible for running containerized applications, such as pods. The control plane is responsible for managing the cluster, such as scheduling pods to worker nodes and monitoring the health of the cluster.</p></li></ul><ul id="aea3095c-8ed8-4795-80e1-3843695e7410" class="bulleted-list"><li style="list-style-type:disc">Worker nodes can be deployed on-premises or in the cloud, while master nodes must be deployed on-premises.</li></ul><ul id="d2b7dc87-0295-4e12-b89e-37b763912ce7" class="bulleted-list"><li style="list-style-type:disc">Worker nodes are more expensive than the control plane.</li></ul><ul id="02a4dd8d-5e24-49be-9712-c6055df6bbb3" class="bulleted-list"><li style="list-style-type:disc">Control plane is more scalable than worker nodes.</li></ul><p id="65eba6e6-3c10-47f8-be2e-fdc9d4f2460a" class=""><strong>Score: 1.00</strong></p><p id="4d81d12f-a6f3-4def-b3e7-94107ee77f31" class=""><strong>Single Choice</strong></p><p id="2cf7dbd0-18c2-4c59-9839-196c670a6fa0" class="">41)</p><p id="d080fa84-da70-4f77-8202-66ed7e1abe0d" class="">You are working as an SRE (Site Reliability Engineer) for a new company responsible for monitoring their Amazon EKS clusters. You started to receive complaints from the development team regarding one particular cluster. The developers are unable to observe new pods being created after they have created a new deployment. You confirmed that the deployment exists, but pods do not exist.</p><p id="2085548c-7bfb-443e-9db0-b2110fbe632c" class="">What could you check to figure out the root cause of the issue?</p><ul id="37f27e5c-47d6-4cae-b3e0-5564e2455e2c" class="bulleted-list"><li style="list-style-type:disc">Check necessary RBAC permissions for the developer to ensure correct permissions.</li></ul><ul id="aa114340-8beb-449f-803e-42ca30dd28e6" class="bulleted-list"><li style="list-style-type:disc">Check the Kube Scheduler logs<p id="6d7f76cc-9395-4ed8-9669-3231e073e768" class="">Comments: It can be helpful for pod scheduling related issues but not for pod creation related issue.</p></li></ul><ul id="da917d6e-4a2b-4125-9226-34e0125a9fc4" class="bulleted-list"><li style="list-style-type:disc">Check the ETCD logs</li></ul><ul id="ca1b0a48-0a86-4230-ab3b-23162a34127b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Check the Kube Controller Manager logs</mark></li></ul><p id="f6a4f6d4-f63e-421d-b047-d66a5dee3295" class=""><strong>Score: 0.00Correct answer(s):<br/><br/></strong></p><p id="15021e4c-eff5-488e-a5bd-30e0456e76e2" class=""><strong>Single Choice</strong></p><p id="b20ff6e2-e012-49e3-8fd1-6c86373ea1c0" class="">42)</p><p id="3da7bc14-c38b-4e55-ad27-930befcff5d2" class="">You are the DevOps lead for your organization, and your team has manually deployed workloads to the EKS cluster till now. You want to improve it.</p><p id="dc5eb18e-a083-486f-80ce-3350df706999" class="">Which automated process in GitHub Actions will you utilize to run deployment steps whenever application code is pushed to the main branch?</p><ul id="bc48ea6e-1b5c-4b39-bd6d-8c01b2d411f3" class="bulleted-list"><li style="list-style-type:disc">Github Actions Jobs.</li></ul><ul id="36d792d8-d284-4433-b5c6-ec9e57d34286" class="bulleted-list"><li style="list-style-type:disc">Github Actions Runners.</li></ul><ul id="cf3b2447-c25a-44d5-b690-6351862e1ef0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Github Actions Workflows configured with push Event on main branch</mark><p id="774c005e-bdfe-4b05-ade0-fb190d92f154" class="">Comments: A workflow is a configurable automated process that will run one or more jobs. Workflows will run when triggered by an event in your repository.</p></li></ul><ul id="ba6b4cd1-6e6a-43ee-8f06-b037f74da875" class="bulleted-list"><li style="list-style-type:disc">Github Actions Workflows configured with schedule trigger.</li></ul><p id="d56bef9a-ed5d-449c-aaa1-289eb6da304e" class=""><strong>Score: 1.00</strong></p><p id="df5e81d5-0e2f-4af1-ada9-073e2b73c842" class=""><strong>Single Choice</strong></p><p id="ee65be2e-349a-491c-83c1-056f61d07324" class="">43)</p><p id="8eedfad2-a907-4e2e-9890-9c0d24538384" class="">You manage a critical web application hosted on multiple pods in an Amazon EKS cluster. The development team releases a new version of the web application image multiple times monthly. You want to incorporate these new changes and do a rolling update to prevent any downtime for the web application.</p><p id="a2baa894-be24-4b90-a0f9-e875953911d6" class="">In this scenario, which kubernetes object(s) can you use to support rolling update?</p><ul id="4819c631-430c-4022-8e1e-3155bb5f9f3a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Only Deployment support rolling update</mark></li></ul><ul id="8ef6b4e1-ba59-4c80-89fe-4c3cca47603e" class="bulleted-list"><li style="list-style-type:disc">Only ReplicaSets support rolling update</li></ul><ul id="da47d579-4254-4291-aaaf-227f0764b6f9" class="bulleted-list"><li style="list-style-type:disc">Both Deployment and ReplicaSets support rolling update.<p id="fa9446e4-c5b0-4cb7-9f8a-1e1750645a66" class="">Comments: RepliaSets doesn&#x27;t support Rolling Update.</p></li></ul><ul id="6cbf5fa3-20d6-46c7-b0cb-dbc3ff3f7815" class="bulleted-list"><li style="list-style-type:disc">Neither Deployment nor ReplicaSets support rolling update.</li></ul><p id="359864e4-2f83-466e-95af-c9872708df62" class=""><strong>Score: 0.00Correct answer(s):<br/><br/></strong></p><p id="0decd5b7-e2c8-430e-8910-5cc1aea88ddd" class=""><strong>Single Choice</strong></p><p id="7446bdb8-77eb-4a44-ae15-a79230cc9017" class="">44)</p><p id="6b41d33e-5d52-4c1b-94e6-cad9141fd5ab" class="">You are configuring a Helm values file for a microservices-based application. Your team wants to ensure that the application can scale easily and that sensitive information, such as database credentials, is stored securely. Question: Which of the following options demonstrates the correct way to structure a Helm values file for this scenario?</p><ul id="0e9f2db2-46f5-4983-9cfb-971c68ce6197" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Utilize helm-secret plugin to store secrets on cloud native secret manager like AWS SecretManager and reference them inside values.yaml</mark><p id="ab43cf21-2207-44e5-bcfc-3668cd5fd469" class="">Comments: This ensures that sensitive data is not exposed in plain text, access is managed, and security best practices are followed.</p></li></ul><ul id="97800a08-88a3-4d3b-9ff1-167dccacd590" class="bulleted-list"><li style="list-style-type:disc">Place all configuration settings, including sensitive data in the values.yaml file. This ensures that everything is in one place for easy access during deployments.</li></ul><ul id="fd1df076-266c-4d01-a245-9bd810c32e3b" class="bulleted-list"><li style="list-style-type:disc">Store sensitive information, such as database credentials, in a separate file outside the Helm chart repository, but reference it in the values.yaml file using an absolute file path.</li></ul><p id="edcc2224-a13c-4662-bc16-b72e4f2a2ebd" class=""><strong>Score: 1.00</strong></p><p id="a4a015b7-7a84-4555-9ec5-f6b0ac1f6fb3" class=""><strong>Single Choice</strong></p><p id="efe8b901-425a-4a28-84ab-3d80ad4b0f39" class="">45)</p><p id="1fdcadd7-ddce-4c18-bb0e-acf91ace389b" class="">You are managing a Kubernetes cluster hosting an application consisting of a backend and database container. To optimize resource utilization, both containers are deployed within the same pod. The backend need to communicate with the database container.</p><p id="eaec8fb9-df16-45c3-a063-52ff4f9f36c3" class="">What is the most suitable method to ensure effective communication between microservices?</p><ul id="eba355cd-1ddc-4df4-9d48-e99e052eb843" class="bulleted-list"><li style="list-style-type:disc">The containers use localhost to communicate with each other</li></ul><ul id="4edd78d1-e433-4c19-9062-5cd993969a15" class="bulleted-list"><li style="list-style-type:disc">Deploy an ingress object</li></ul><ul id="1a1bb83d-37c9-4e80-a737-f7b72397a4df" class="bulleted-list"><li style="list-style-type:disc">Create a service of type ClusterIP<p id="7a0301fb-59e2-454f-b5c8-816975e640b4" class="">Comments: Containers within the same pod do not need any specific communication mechanisms since they share a common network namespace.</p></li></ul><ul id="75b1cd5f-5bb5-4c55-9585-7d13a855b9ca" class="bulleted-list"><li style="list-style-type:disc">C<mark class="highlight-teal">reate a service of type NodeIP</mark></li></ul><p id="0ed64dc4-7318-46cc-9c06-e4ed52b1bc7a" class=""><strong>Score: 0.00Correct answer(s):<br/><br/></strong></p><p id="4e2c33ca-9b2f-4698-96de-d07ed42e3933" class=""><strong>Single Choice</strong></p><p id="b8a34aff-0472-4667-92e6-361de519e91c" class="">46)</p><p id="34f949d4-b225-43dc-b114-2804ca6349df" class="">A software engineer is deploying two microservices, orders and products, to an Amazon EKS cluster. The microservices need to be accessible over the Internet. The engineer wants to ensure fault tolerance for the microservices.</p><p id="75a4a64b-b9d6-4ac0-881c-e784d956f594" class="">Which combination of Kubernetes resources should the engineer use to achieve this?</p><ul id="cf24322f-84e6-4cc2-af6a-189e4782278e" class="bulleted-list"><li style="list-style-type:disc">Use a ReplicaSet for each microservice to ensure the desired number of replicas and a Service of type NodePort to expose them to the Internet.</li></ul><ul id="04eda62e-9ab3-4209-8647-f6efce48b22a" class="bulleted-list"><li style="list-style-type:disc">Use a single Deployment for both microservices and a Service of type ExternalName to expose them to the internet.</li></ul><ul id="afdb4e49-15c6-4508-8744-11a54cfbd8c0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Use a Deployment for each microservice to ensure the desired number of replicas and a Service of type LoadBalancer to expose them to the Internet.</mark><p id="d271402a-0e32-4000-ada3-6f15114416b6" class="">Comments: Deployments ensure the desired number of pod replicas are maintained, providing fault tolerance. Services of type LoadBalancer expose the microservices to the Internet by creating a cloud provider&#x27;s load balancer that routes traffic to the service.</p></li></ul><ul id="9d3ac670-e297-4fd2-81a3-45b9bcea7afe" class="bulleted-list"><li style="list-style-type:disc">Use a Deployment for each microservice without specifying replicas and a Service of type ClusterIP to expose them to the Internet.</li></ul><p id="af5fc2f5-4114-492b-b7a2-6e7ad1b8d62d" class=""><strong>Score: 1.00</strong></p><p id="3e66a4e9-af67-47fb-af56-8f11531c8e02" class=""><strong>Single Choice</strong></p><p id="cbeabd86-8547-4f53-9d29-bbb4511074a5" class="">47)</p><p id="430cfca8-34a9-45e5-9f1d-83d862836723" class="">As a new developer on your team, you have been tasked with deploying an application to Kubernetes.</p><p id="f423a2da-67d6-4074-8763-d36fb49f64b7" class="">Which of the following BEST describes how kubectl can be used?</p><ul id="b0fe8413-2b9b-4d02-81ee-b07a595c5117" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Kubectl is the command line tool that allows you to run commands against Kubernetes clusters, such as deploying applications, viewing status, and managing containerized workloads.</mark><p id="d5a72375-c383-4e8f-8434-1978ad22041b" class="">Comments: Kubectl is the official CLI for working with Kubernetes clusters. It allows you to deploy, manage, and monitor applications running on Kubernetes from the command line.</p></li></ul><ul id="0db75cbd-735c-4102-98fe-38a335490cf7" class="bulleted-list"><li style="list-style-type:disc">Kubectl should be avoided in favor of third-party UIs and dashboards for managing Kubernetes.</li></ul><ul id="0941bf3d-593c-4f87-8ea8-a5f8d0d2d1d6" class="bulleted-list"><li style="list-style-type:disc">Kubectl enables you to create Kubernetes manifests locally without connecting to a cluster.</li></ul><ul id="88a707de-c2cf-4feb-9539-ca5b521484e4" class="bulleted-list"><li style="list-style-type:disc">Kubectl allows you to directly modify infrastructure resources like nodes and networking configurations within a cluster.</li></ul><p id="a46dda7e-fd7e-43de-966e-247ec56c5f26" class=""><strong>Score: 1.00</strong></p><p id="0d232869-8150-4d09-a319-e1685924c853" class=""><strong>Single Choice</strong></p><p id="c9b8a0c6-cb61-42bf-8f65-9b8d2753c07d" class="">48)</p><p id="1aa5541c-936f-41f8-8c03-50d8e0dcbcb4" class="">As a solutions architect, you are evaluating Kubernetes for a new application.</p><p id="7f1a851a-a30b-4ee8-b8c3-988194002f2d" class="">Which statement BEST describes the differences between the control plane and worker nodes?</p><ul id="e89b40e1-1500-4bb0-af38-e7606dd3a29e" class="bulleted-list"><li style="list-style-type:disc">Control plane nodes only run controllers while worker nodes run application workloads.</li></ul><ul id="b9f9a3c4-cd47-4323-9237-fc574694694b" class="bulleted-list"><li style="list-style-type:disc">There is no difference between the control plane and worker nodes - both can perform all tasks.</li></ul><ul id="4dac4db8-a6c8-472c-9b4f-4aaca83d1a4a" class="bulleted-list"><li style="list-style-type:disc">Worker nodes manage the Kubernetes cluster while control plane nodes run applications.</li></ul><ul id="cfdedba9-4521-4ade-99e7-8e49ae57f975" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Control plane nodes run the Kubernetes control plane to manage the cluster, while worker nodes run applications and services.</mark><p id="b8b7af83-b333-4206-b9f0-213268611c44" class="">Comments: The control plane manages and schedules workloads on the worker nodes. Worker nodes actually run the applications and services deployed by users.</p></li></ul><p id="e8431398-c987-4718-91ae-146ab01fc865" class=""><strong>Score: 1.00</strong></p><p id="bd6cdfe6-a52d-48e7-ba7b-2e0f42a38c4b" class=""><strong>Single Choice</strong></p><p id="00698f6b-0b07-4be7-a5a6-7d8fc13a7860" class="">49)</p><p id="08b80f5b-76e5-4293-8e1a-18d1d87ca973" class="">A Devops engineer created an EKS cluster using a deployment IAM role. When the engineer tries to connect to the cluster with a personal IAM role through kubectl, they get &quot;An error occurred (InvalidClientTokenId) when calling the AssumeRole operation: The security token included in the request is invalid&quot;. They repeatedly ran the eks update-kubeconfig command, which was completed without errors.</p><p id="e4c77d26-b420-4654-9fe4-488569419773" class="">What actions will help to resolve this error most efficiently?</p><ul id="227204a0-7cc6-4aa4-bcaf-47d39d2ffe0b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">Assume the deployments IAM role used to create the cluster and add the personal role to the aws-auth.yaml file.</mark><p id="62fa2d54-a7f6-44a6-95d4-023244aab7c5" class="">Comments: When an EKS cluster is created, it adds the role assumed to create it to the aws-auth.yaml file. For another role/user to run kubectl commands, they have to be added to the aws-auth.yaml file.</p></li></ul><ul id="92e03e2e-64c6-4b2e-b3ac-5155c73f4459" class="bulleted-list"><li style="list-style-type:disc">Create a support ticket to AWS and get them to provide a valid token id.</li></ul><ul id="5a5ca99d-e402-4570-952f-00fc89db74ea" class="bulleted-list"><li style="list-style-type:disc">Add in Kubernetes RBAC for the user so that they have permission to run kubectl commands.</li></ul><ul id="f1e8a7d7-6c35-4b04-8980-3622ef26683e" class="bulleted-list"><li style="list-style-type:disc">Delete the cluster and manually create it on the console with the DevOps engineer&#x27;s IAM credentials.</li></ul><p id="f3136009-7a9c-4011-9fdd-338425317e3a" class=""><strong>Score: 1.00</strong></p><p id="77dd8338-c349-4e30-bc52-18cf7dd547e1" class=""><strong>Single Choice</strong></p><p id="7dbe5d29-9cd5-454f-a57e-d8437a8d9868" class="">50)</p><p id="ba51ba08-f837-4dbf-9f41-a01b5185c51e" class="">What command option when used with kubectl will list all resources running in the &quot;workshop&quot; namespace ?</p><ul id="a2d94be8-22e2-42d8-aa31-b5e80a0f1fd3" class="bulleted-list"><li style="list-style-type:disc">kubectl get all --all-namespaces</li></ul><ul id="cb994bfa-713e-4b2d-aeec-325e625a56b4" class="bulleted-list"><li style="list-style-type:disc">kubectl get all</li></ul><ul id="8517c9f0-8672-47b0-b06f-0f2290dbf590" class="bulleted-list"><li style="list-style-type:disc">kubectl get pods</li></ul><ul id="e1db1dc9-59e2-40f3-9a8b-a3063c6f63dd" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">kubectl get all -n workshop</mark><p id="49772ae6-ee61-42f4-a7de-bc3b7eab6b38" class="">Comments: -n or --namespace is used to see resources running in a namespace</p><p id="5b033613-9bc5-454a-8c53-c3a00ffe0a7a" class="">
+    </p></li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
