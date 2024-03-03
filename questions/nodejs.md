@@ -146,3 +146,151 @@ control flow functions refer to mechanisms or patterns used to manage the flow o
 <iframe src="../nodejs/promise_code.js" frameborder="0" width="100%" height="400"></iframe>
 - Async/Await
 <iframe src="../nodejs/async_await_code.js" frameborder="0" width="100%" height="350"></iframe>
+
+### 20. What is the buffer class in Node.js?
+
+Buffer class stores raw data similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap. Buffer class is used because pure JavaScript is not compatible with binary data
+
+```javascript
+const buf1 = Buffer.from("Hello, world!", "utf8");
+console.log(buf1.toString("utf8")); // Convert buffer to string
+```
+
+```javascript
+// Create an empty buffer of a specific size
+const buf2 = Buffer.alloc(10); // Creates a buffer of 10 bytes filled with zeros
+buf2.write("Node.js", "utf8"); // Write string to buffer
+console.log(buf2.toString("utf8")); // Node.js
+```
+
+```javascript
+// Create an uninitialized buffer of a specific size (unsafe)
+const buf3 = Buffer.allocUnsafe(10);
+```
+
+```javascript
+const buf4 = Buffer.concat([buf1, buf2]); // Concatenate buffers
+console.log(buf4.toString("utf8")); // Hello, world!Node.js
+// Slicing buffers
+const slice = buf4.slice(0, 5); // Extract a slice of buffer
+console.log(slice.toString("utf8")); // Hello
+```
+
+### 21. What is callback hell?
+
+Callback hell, also known as the pyramid of doom, is the result of intensively nested, unreadable, and unmanageable callbacks, which in turn makes the code harder to read and debug
+improper implementation of the asynchronous logic causes callback hell
+
+### 22. List the various Node.js timing features
+
+- **setTimeout():** The setTimeout() function is used to execute a callback function once after a specified delay (in milliseconds). It schedules the callback to be invoked after the specified delay.
+
+```javascript
+setTimeout(() => {
+  console.log("This code will be executed after 2 seconds");
+}, 2000);
+```
+
+- **setInterval():** The setInterval() function is used to repeatedly execute a callback function at a specified interval (in milliseconds). It schedules the callback to be invoked repeatedly, with the specified interval between each invocation.
+
+```javascript
+setInterval(() => {
+  console.log("This code will be executed every 3 seconds");
+}, 3000);
+```
+
+- **clearTimeout():** The clearTimeout() function is used to cancel a previously scheduled setTimeout() callback before it is executed. It takes the timeout ID returned by setTimeout() as its argument.
+
+```javascript
+const timeoutId = setTimeout(() => {
+  console.log("This code will not be executed");
+}, 2000);
+
+clearTimeout(timeoutId); // Cancel the scheduled timeout
+```
+
+- **clearInterval():** The clearInterval() function is used to stop the execution of a previously scheduled setInterval() callback. It takes the interval ID returned by setInterval() as its argument.
+
+```javascript
+const intervalId = setInterval(() => {
+  console.log("This code will not be executed repeatedly");
+}, 3000);
+
+clearInterval(intervalId); // Stop the interval execution
+```
+
+- **process.nextTick():** The process.nextTick() function is used to schedule a callback function to be invoked in the next iteration of the event loop, immediately after the current operation completes. It allows you to defer the execution of a callback until the current operation is complete.
+
+```javascript
+process.nextTick(() => {
+  console.log(
+    "This code will be executed in the next iteration of the event loop"
+  );
+});
+```
+
+### 23. What is a first-class function in Javascript?
+
+First-class functions are a powerful feature of JavaScript that allows you to write more flexible and reusable code. In Node.js, first-class functions are used extensively in asynchronous programming to write non-blocking code.
+
+- **Passing Functions as Arguments:**
+  You can pass functions as arguments to other functions. This is commonly used in callback functions and higher-order functions.
+
+```javascript
+function greet(name) {
+  console.log("Hello, " + name + "!");
+}
+
+function executeCallback(callback) {
+  callback("John");
+}
+
+executeCallback(greet); // Pass the greet function as an argument
+```
+
+- **Returning Functions from Functions:**
+  You can return functions from other functions. This is useful for creating closures and factory functions.
+
+```javascript
+function createGreeter() {
+  function greet(name) {
+    console.log("Hello, " + name + "!");
+  }
+  return greet; // Return the greet function
+}
+
+const greeter = createGreeter();
+greeter("Jane"); // Call the returned function
+```
+
+- **Assigning Functions to Variables:**
+  You can assign functions to variables, allowing you to refer to them by their variable names.
+
+```javascript
+const sayHello = function (name) {
+  console.log("Hello, " + name + "!");
+};
+
+sayHello("Alice"); // Call the function using the variable name
+```
+
+- **Storing Functions in Data Structures:**
+  You can store functions in arrays, objects, or other data structures, just like any other value.
+
+```javascript
+const functions = {
+  greet: function (name) {
+    console.log("Hello, " + name + "!");
+  },
+};
+
+functions.greet("Bob"); // Call the function stored in the object
+```
+
+### 24. What is a fork in node JS?
+
+The Fork method in Node.js creates a new child process that runs a separate Node.js instance and can be useful for running CPU-intensive tasks or creating a cluster of Node.js servers.
+
+[Back to top](#top)
+
+[:arrow_up:](#top)
