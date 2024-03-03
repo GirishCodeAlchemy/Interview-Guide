@@ -34,7 +34,7 @@ A callback function is called after a given task. It allows other code to be run
 
 <details>
   <summary>Click to view Sample Code</summary>
-  <iframe src="../nodejs/callback_code.js" frameborder="0" width="100%" height="400"></iframe>
+  <iframe src="../nodejs/callback_code.js" frameborder="0" width="100%" height="350"></iframe>
 </details>
 
 ### 6. What are the advantages of using promises instead of callbacks?
@@ -73,7 +73,7 @@ module.exports = { generateNewFucntionname };
 
 ### 9. What are the pros and cons of Node.js?
 
-|                                              Pros                                              | cons                                                                          |
+|                                            **Pros**                                            | **cons**                                                                      |
 | :--------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------- |
 |                            Fast processing and an event-based model                            | Not suitable for heavy computational tasks                                    |
 |                    Uses JavaScript, which is well-known amongst developers                     | Using callback is complex since you end up with several nested callbacks      |
@@ -112,7 +112,7 @@ The URL module in Node.js provides various utilities for URL resolution and pars
 
 <details>
   <summary>Click to view Sample Code</summary>
-  <iframe src="../nodejs/url_module.js" frameborder="0" width="100%" height="400"></iframe>
+  <iframe src="../nodejs/url_module.js" frameborder="0" width="100%" height="200"></iframe>
 </details>
 
 ### 15. What is the Express.js package?
@@ -126,5 +126,5 @@ Express is a flexible Node.js web application framework that provides a wide set
 
 <details>
   <summary>Click to view Sample Code</summary>
-  <iframe src="../nodejs/simple_express.js" frameborder="0" width="100%" height="400"></iframe>
+  <iframe src="../nodejs/simple_express.js" frameborder="0" width="100%" height="300"></iframe>
 </details>
