@@ -32,10 +32,7 @@ The Multi-Threaded Request/Response Stateless Model is not followed by the Node 
 
 A callback function is called after a given task. It allows other code to be run in the meantime and prevents any blocking. Being an asynchronous platform, Node.js heavily relies on callback. All APIs of Node are written to support callbacks.
 
-<details>
-  <summary>Click to view Sample Code</summary>
-  <iframe src="../nodejs/callback_code.js" frameborder="0" width="100%" height="350"></iframe>
-</details>
+<iframe src="../nodejs/callback_code.js" frameborder="0" width="100%" height="350"></iframe>
 
 ### 6. What are the advantages of using promises instead of callbacks?
 
@@ -44,10 +41,7 @@ A callback function is called after a given task. It allows other code to be run
 - It has built-in error handling.
 - Improved readability.
 
-<details>
-  <summary>Click to view Sample Code</summary>
   <iframe src="../nodejs/promise_code.js" frameborder="0" width="100%" height="400"></iframe>
-</details>
 
 ### 7. How is Node.js most frequently used?
 
@@ -93,10 +87,7 @@ next Tick() postpones the execution of action until the next pass around the eve
 EventEmitter is a class that holds all the objects that can emit events
 Whenever an object from the EventEmitter class throws an event, all attached functions are called upon synchronously
 
-<details>
-  <summary>Click to view Sample Code</summary>
   <iframe src="../nodejs/event_emitter.js" frameborder="0" width="100%" height="400"></iframe>
-</details>
 
 ### 13. What is the package.json file?
 
@@ -110,10 +101,7 @@ npm init
 
 The URL module in Node.js provides various utilities for URL resolution and parsing. It is a built-in module that helps split up the web address into a readable format.
 
-<details>
-  <summary>Click to view Sample Code</summary>
   <iframe src="../nodejs/url_module.js" frameborder="0" width="100%" height="200"></iframe>
-</details>
 
 ### 15. What is the Express.js package?
 
@@ -124,7 +112,37 @@ Express is a flexible Node.js web application framework that provides a wide set
 - The request object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on
 - The response object represents the HTTP response that an Express app sends when it receives an HTTP request
 
-<details>
-  <summary>Click to view Sample Code</summary>
   <iframe src="../nodejs/simple_express.js" frameborder="0" width="100%" height="300"></iframe>
-</details>
+
+### 17. How do you create a simple server in Node.js that returns Hello World?
+
+- Import the HTTP module
+- Use createServer function with a callback function using request and response as parameters.
+- Type “hello world."
+- Set the server to listen to port 8080 and assign an IP address
+
+  <iframe src="../nodejs/simple_server.js" frameborder="0" width="100%" height="300"></iframe>
+
+### 18. What is REPL in Node.js?
+
+REPL stands for Read Eval Print Loop, and it represents a computer environment. It’s similar to a Windows console or Unix/Linux shell in which a command is entered. Then, the system responds with an output
+
+- Read - Reads user input parse the input into javascript data-tructure and stores in memory
+- Eval - Takes and evaluates the data structure
+- Print - Prints the result
+- Loop - Loops the above command until user press `ctrl + c` twice
+
+```
+node
+```
+
+### 19. What is the control flow function?
+
+control flow functions refer to mechanisms or patterns used to manage the flow of execution in asynchronous code. Since Node.js is heavily asynchronous, control flow functions are essential for handling asynchronous operations effectively.
+
+- callbacks
+<iframe src="../nodejs/callback_code.js" frameborder="0" width="100%" height="350"></iframe>
+- Promises
+<iframe src="../nodejs/promise_code.js" frameborder="0" width="100%" height="400"></iframe>
+- Async/Await
+<iframe src="../nodejs/async_await_code.js" frameborder="0" width="100%" height="350"></iframe>
