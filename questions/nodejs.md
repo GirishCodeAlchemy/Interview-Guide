@@ -291,6 +291,118 @@ functions.greet("Bob"); // Call the function stored in the object
 
 The Fork method in Node.js creates a new child process that runs a separate Node.js instance and can be useful for running CPU-intensive tasks or creating a cluster of Node.js servers.
 
-[Back to top](#top)
+### 25. What is the difference between JavaScript and Node.js?
 
-[:arrow_up:](#top)
+Node.js is a runtime environment for executing JavaScript code outside of a web browser, while JavaScript is a programming language that can be executed in both web browsers and Node.js environments.
+
+### 26. How to Make code synchronus
+
+by default, code execution is asynchronous, meaning that operations like file I/O, network requests, and database queries are non-blocking, allowing the program to continue executing while waiting for these operations to complete. However, if you need to make your code synchronous, you can achieve this using various techniques. Here are some common approaches:
+
+- Using Synchronous Versions of Functions
+
+```javascript
+const fs = require("fs");
+
+// Synchronous file read
+const data = fs.readFileSync("file.txt", "utf8");
+console.log(data);
+```
+
+- Using Promises and Async/Await:
+
+```javascript
+const fs = require("fs").promises;
+
+async function readFile() {
+  try {
+    const data = await fs.readFile("file.txt", "utf8");
+    console.log(data);
+  } catch (error) {
+    console.error("Error reading file:", error);
+  }
+}
+
+readFile();
+```
+
+- Using Callbacks in a Sequential Manner:
+
+```javascript
+const fs = require("fs");
+
+fs.readFile("file.txt", "utf8", (err, data) => {
+  if (err) {
+    console.error("Error reading file:", err);
+    return;
+  }
+  console.log(data);
+});
+```
+
+- Using Synchronous Control Flow Libraries:
+
+```javascript
+const Sync = require("sync");
+
+Sync(function () {
+  const data = fs.readFileSync.sync(null, "file.txt", "utf8");
+  console.log(data);
+});
+```
+
+### 27. What is the primary reason for using the event-based model in Node.js?
+
+The main reason to use the event-based model in Node.js is performance. The event-based model allows for non-blocking I/O operations, which means that Node.js can handle a large number of connections without using a lot of resources.
+
+### 28. What is the advantage of using Node.js?
+
+Node.js is fast and scalable. Node.js is easy to learn and use. Node.js is well-suited for real-time applications, such as chat applications, online games, and streaming services. This is because Node.js can handle a large number of connections and can perform non-blocking I/O operations, which makes it ideal for real-time communication.
+
+### 29. Are there any disadvantages to using Node.js?
+
+Node.Js is not suitable for CPU-intensive tasks. This is because Node.js is single-threaded, meaning it can only execute one task at a time. Node.js is not suitable for applications that require a lot of memory. This is because Node.js uses a lot of memory for each connection. If you have a large number of connections, it can quickly consume a lot of memory.
+
+### 30. How does Node.js overcome the problem of blocking I/O operations?
+
+Node.js uses an event-driven, non-blocking I/O model that allows it to handle I/O operations more efficiently. By using callbacks, Node.js can continue processing other tasks while waiting for I/O operations to complete. This means that Node.js can handle multiple requests simultaneously without causing any delays. Additionally, Node.js uses a single-threaded event loop architecture, which allows it to handle a high volume of requests without any issues.
+
+### 31. Explain the concept of stub in Node.js.
+
+In Node.js, a stub is a function that serves as a placeholder for a more complex function. Stubs are typically used in unit testing to replace a real function with a simplified version that returns a predetermined value. By using a stub, you can ensure that your unit tests are predictable and consistent.
+
+### 32. What are global objects in Node.js?
+
+Global objects in Node.js are objects that are available in all modules without the need for an explicit require statement. Some of the most commonly used global objects in Node.js include process, console, and buffer.
+
+### 33. How to measure the duration of async operations?
+
+The console.time and console.timeEnd methods allow you to measure the duration of a block of code. The console.time method is used to start the timer and the console.timeEnd method is used to stop the timer and log the duration to the console.
+
+The performance.now method provides a more precise way to measure the duration of async operations. It returns the current timestamp in milliseconds, which can be used to calculate the duration of a task.
+
+```javascript
+// Start the timer with a label
+console.time("myTimer");
+
+// Perform some synchronous or asynchronous operations
+// For example, simulating a delay with setTimeout
+setTimeout(() => {
+  // Stop the timer with the same label
+  console.timeEnd("myTimer");
+}, 2000);
+```
+
+### 34. What are the types of streams available in Node.js?
+
+There are four types of streams available in Node.js, including readable streams, writable streams, duplex streams, and transform streams.
+
+### 35. What is a passport in Node.js?
+
+Passport is a popular authentication middleware for Node.js. It provides a simple and modular way to implement authentication in Node.js applications. Passport supports many authentication mechanisms, including username/password, social logins like Facebook and Google, and JSON Web Tokens (JWTs).
+
+### 36. How to get information about a file in Node.js?
+
+In Node.js, the fs module provides methods for working with the file system. To get information about a file, you can use the `fs.stat()` method. The fs.stat() method returns an object that contains information about the file, such as the file size, creation date, and modified date.
+
+[Back to top](#top)
