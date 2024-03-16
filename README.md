@@ -1,4 +1,4 @@
-# [Preparation Guide](https://girishcodealchemy.github.io/Interview/)
+# [Preparation Guide](https://girishcodealchemy.github.io/Interview-Guide/)
 
 - [kafka](./questions/kafka.md)
 - [websphere](./questions/websphere_mq.md)
