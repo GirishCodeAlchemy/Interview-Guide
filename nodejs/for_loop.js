@@ -20,3 +20,18 @@ const array1 = [1, 2, 3, 4, 5];
 array1.forEach((element, index) => {
     console.log(`Element at index ${index}: ${element}`);
 });
+
+
+// Map loop
+
+const array2 = ['apple', 'orange', 'pineapple', 'banana', 'muskmelon'];
+const newArray = array2.map((item, index) => {
+    // Here, item represents each element of the array
+    // and index represents the index of the current element
+    
+    // You can perform any operation on each element here
+    // For example, let's convert each element to uppercase
+    return item.toUpperCase();
+});
+
+console.log(newArray);
