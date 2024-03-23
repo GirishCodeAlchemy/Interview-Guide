@@ -23,14 +23,10 @@ array1.forEach((element, index) => {
 
 
 // Map loop
-
 const array2 = ['apple', 'orange', 'pineapple', 'banana', 'muskmelon'];
 const newArray = array2.map((item, index) => {
     // Here, item represents each element of the array
     // and index represents the index of the current element
-    
-    // You can perform any operation on each element here
-    // For example, let's convert each element to uppercase
     return item.toUpperCase();
 });
 
