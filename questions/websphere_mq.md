@@ -51,11 +51,11 @@ Establish automated alerts to notify administrators of potential problems.`
 
 Answer: (Candidate should discuss strategies for estimating future message volumes, scaling resources, and implementing capacity planning models.)
 
-How do you handle security compliance and ensure that WebSphere MQ configurations adhere to industry standards and enterprise policies?
+### How do you handle security compliance and ensure that WebSphere MQ configurations adhere to industry standards and enterprise policies?
 
 Answer: (Candidate should mention the use of security audits, regular reviews, and compliance checks to ensure adherence to security policies.)
 
-Describe a scenario where you had to upgrade WebSphere MQ to a new version. What considerations did you take into account, and how did you ensure a smooth transition?
+### Describe a scenario where you had to upgrade WebSphere MQ to a new version. What considerations did you take into account, and how did you ensure a smooth transition?
 
 Answer:
 
@@ -123,34 +123,34 @@ Communicated the successful completion of the upgrade to stakeholders.
 Provided guidelines for users and support teams to address any post-upgrade issues.
 ```
 
-Discuss your experience with integrating WebSphere MQ into various middleware solutions and enterprise applications.
+### Discuss your experience with integrating WebSphere MQ into various middleware solutions and enterprise applications.
 
 Answer: (Candidate should provide examples of integration projects, detailing the technologies involved and the outcomes achieved.)
 
-Problem-Solving and Scenario-Based:
-If you encounter a sudden spike in message volume, how would you scale the WebSphere MQ infrastructure to handle the increased load?
+## Problem-Solving and Scenario-Based:
+### If you encounter a sudden spike in message volume, how would you scale the WebSphere MQ infrastructure to handle the increased load?
 
 Answer: (Candidate should discuss strategies for horizontal scaling, optimizing configurations, and possibly employing clustering to distribute the load.)
 
-How do you troubleshoot a situation where messages are not being delivered as expected, and what steps would you take to identify and resolve the issue?
+### How do you troubleshoot a situation where messages are not being delivered as expected, and what steps would you take to identify and resolve the issue?
 
 Answer: (Candidate should describe a systematic approach involving log analysis, checking configurations, and using diagnostic tools to isolate and fix the issue.)
 
-Explain the steps you would take to implement message compression to optimize bandwidth usage in WebSphere MQ.
+### Explain the steps you would take to implement message compression to optimize bandwidth usage in WebSphere MQ.
 
 Answer: (Candidate should outline the process of implementing compression algorithms, considering message payload, and the impact on both sender and receiver.)
 
-In a disaster recovery scenario, how would you ensure the continuity of message delivery and data integrity using WebSphere MQ?
+### In a disaster recovery scenario, how would you ensure the continuity of message delivery and data integrity using WebSphere MQ?
 
 Answer: (Candidate should discuss strategies such as remote queue managers, log replication, and failover mechanisms to ensure continuous operation in a disaster recovery scenario.)
 
-How do you approach securing communication channels between WebSphere MQ components to prevent unauthorized access?
+### How do you approach securing communication channels between WebSphere MQ components to prevent unauthorized access?
 
 Answer: (Candidate should discuss the use of SSL/TLS, channel authentication, and secure configurations to prevent unauthorized access to communication channels.)
 
 ## Difference
 
-Kafka and WebSphere MQ are both messaging systems, but they differ in their architectures, use cases, and design philosophies. Here are key distinctions between Kafka and WebSphere MQ:
+### Kafka and WebSphere MQ are both messaging systems, but they differ in their architectures, use cases, and design philosophies. Here are key distinctions between Kafka and WebSphere MQ:
 
 1. Messaging Model:
    Kafka:
