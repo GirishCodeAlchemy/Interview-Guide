@@ -345,7 +345,130 @@ ansible all -m ping
    become: yes
    tasks:
      - name: Add user
+       user:
+         name: devops
+         groups: "sudo,docker"
+         append: yes
+ ```
 
+ ---
+
+ 17️⃣ How can you execute a shell script on remote servers using Ansible?
+ ✅ Solution:
+ Use the `script` module to copy and execute a local script on remote hosts.
+ ```yaml
+ - name: Run shell script on remote server
+   hosts: all
+   tasks:
+     - name: Execute script
+       script: /local/path/to/script.sh
+ ```
+
+ ---
+
+ 18️⃣ How can you run a command only if another command succeeds in Ansible?
+ ✅ Solution:
+ Use `register` and `when` to run commands conditionally based on previous command results.
+ ```yaml
+ - name: Run command only if the previous one succeeds
+   hosts: all
+   tasks:
+     - name: First command
+       command: echo "First command"
+       register: result1
+
+     - name: Second command
+       command: echo "Second command"
+       when: result1.rc == 0
+ ```
+
+ ---
+
+ 19️⃣ How do you ensure a task is always executed at the end of the playbook?
+ ✅ Solution:
+ Use **handlers** to ensure certain tasks (like restarts) run at the end, even if other tasks trigger them.
+ ```yaml
+ - name: Ensure a task runs at the end
+   hosts: all
+   tasks:
+     - name: Install nginx
+       apt:
+         name: nginx
+         state: present
+       notify: Restart nginx
+
+   handlers:
+     - name: Restart nginx
+       service:
+         name: nginx
+         state: restarted
+ ```
+ 
+ ---
+
+ 20️⃣ How would you handle conditional logic based on host attributes (e.g., operating system type)?
+ ✅ Solution:
+ Use `when` to conditionally execute tasks based on system facts like OS type.
+ ```yaml
+ - name: Conditional task based on OS type
+   hosts: all
+   tasks:
+     - name: Install nginx on Debian-based systems
+       apt:
+         name: nginx
+         state: present
+       when: ansible_os_family == "Debian"
+
+     - name: Install nginx on RedHat-based systems
+       yum:
+         name: nginx
+         state: present
+       when: ansible_os_family == "RedHat"
+ ```
+
+ ---
+ 21️⃣ How do you manage Ansible playbook execution on different environments (dev, staging, prod)?
+ ✅ Solution:
+ You can use **inventory files** and **group variables** to manage different environments.
+ ```ini
+ # inventory/production
+ [web_servers]
+ prod-web1
+ prod-web2
+
+ # inventory/development
+ [web_servers]
+ dev-web1
+ dev-web2
+ ```
+ Define environment-specific variables in group files:
+ ```yaml
+ # group_vars/production/web_servers.yml
+ nginx_port: 80
+ ```
+
+ ---
+ 
+ 22️⃣ How do you ensure a task is only run if a file has changed on the target system?
+ ✅ Solution:
+ Use `notify` and **handlers** to only restart services if a file has changed.
+ ```yaml
+ - name: Ensure file is copied only if changed
+   hosts: all
+   tasks:
+     - name: Copy configuration file
+       copy:
+         src: /local/path/to/config.conf
+         dest: /etc/config.conf
+         mode: '0644'
+       notify: Restart nginx
+
+   handlers:
+     - name: Restart nginx
+       service:
+         name: nginx
+         state: restarted
+ ```
 ---
 
 ### Bonus: Rapid-Fire Scenario Questions
