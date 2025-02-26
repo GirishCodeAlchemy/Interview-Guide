@@ -244,8 +244,12 @@ ansible all -m ping
 
 ```
 
- 11️⃣ How do you execute a task on a specific host only once within a playbook?
- ✅ Solution:
+---
+
+### 1️⃣1️⃣ How do you execute a task on a specific host only once within a playbook?
+
+####  ✅ Solution:
+
  Use `run_once: yes` to ensure a task runs only once, regardless of how many hosts are in the inventory.
  ```yaml
  - name: Execute task on one host only
@@ -255,8 +259,12 @@ ansible all -m ping
        command: echo "This will run only once"
        run_once: yes
  ```
- 12️⃣ How do you perform a rolling restart of a service across a set of hosts, one at a time?
- ✅ Solution:
+
+---
+
+### 1️⃣2️⃣ How do you perform a rolling restart of a service across a set of hosts, one at a time?
+#### ✅ Solution:
+ 
  Use `serial` to control the number of hosts that can be processed at the same time.
  ```yaml
  - name: Rolling restart of nginx service
@@ -269,8 +277,12 @@ ansible all -m ping
          name: nginx
          state: restarted
  ```
- 13️⃣ How do you install a package only if it is not already installed?
- ✅ Solution:
+---
+
+### 1️⃣3️⃣ How do you install a package only if it is not already installed?
+
+#### ✅ Solution:
+ 
  Ansible ensures idempotency. By default, it only installs packages if they are not already present.
  ```yaml
  - name: Install apache2 package
@@ -282,8 +294,11 @@ ansible all -m ping
          name: apache2
          state: present
  ```
- 14️⃣ How would you ensure that a specific file is always present with the correct content on a target server?
- ✅ Solution:
+---
+
+### 1️⃣4️⃣ How would you ensure that a specific file is always present with the correct content on a target server?
+
+#### ✅ Solution:
  Use the `copy` or `template` module to ensure that a file is always present with the desired content.
  ```yaml
  - name: Ensure configuration file is present
@@ -296,8 +311,11 @@ ansible all -m ping
          dest: /etc/config.conf
          mode: '0644'
  ```
- 15️⃣ How do you handle parallel execution in Ansible, and what can you do to limit the number of parallel tasks?
- ✅ Solution:
+---
+
+### 1️⃣5️⃣ How do you handle parallel execution in Ansible, and what can you do to limit the number of parallel tasks?
+
+#### ✅ Solution:
  Use `forks` in the `ansible.cfg` configuration file to control parallelism, or `serial` in the playbook to control the number of hosts processed at once.
  In `ansible.cfg`:
  ```ini
@@ -315,8 +333,11 @@ ansible all -m ping
          name: nginx
          state: present
  ```
- 16️⃣ You have multiple users in different groups. How do you add a user to multiple groups in Ansible?
- ✅ Solution:
+
+---
+
+### 1️⃣6️⃣ You have multiple users in different groups. How do you add a user to multiple groups in Ansible?
+#### ✅ Solution:
  Use the `user` module to add the user to multiple groups.
  ```yaml
  - name: Add user to multiple groups
