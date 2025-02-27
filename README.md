@@ -5,6 +5,7 @@
 - [kafka](./questions/kafka.md)
 - [websphere](./questions/websphere_mq.md)
 - [Mysql](./questions/mysql.md)
+- [machine-learning](./questions/machine-learning.md)
 - [Nodejs](./questions/nodejs.md)
 - [Python](https://github.com/GirishCodeAlchemy/Interview/tree/main/python/)
 - [Golang](https://github.com/GirishCodeAlchemy/Interview/tree/main//go/)
